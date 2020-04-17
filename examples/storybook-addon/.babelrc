@@ -1,0 +1,7 @@
+{
+  "presets": [
+    "@themeprint/themeprint",
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
+}
