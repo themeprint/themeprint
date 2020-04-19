@@ -106,7 +106,6 @@ export const rotateHue = degrees => {
 }
 
 const isOdd = num => num % 2
-const isEven = num => !isOdd(num)
 
 const centerIndex = array => {
   if (!array) {
@@ -169,41 +168,8 @@ export const configure = defaultOptions => (valueOrRange, options) => {
     return result(palette[centerIndex(palette)], palette)
   }
 
-  //   const { name, start, center, end, rotation } = obj
-
-  //   const toScale = (name, center, value) => {
-  //     if (!name) {
-  //       return value
-  //     }
-
-  //     return {
-  //       [name]: center.css(),
-  //       [`${name}:scale`]: value.map(c => c.css()),
-  //     }
-  //   }
-
-  //   if (start && center && end) {
-  //     return toScale(name, center, colorsFromEdgesAndCenter(start, center, end))
-  //   }
-
-  //   if (start && end) {
-  //     const palette = colorsFromEdges(start, end)
-  //     return toScale(name, palette[4], palette)
-  //   }
-
   // Assume center value
   return result(valueOrRange, colorsFromCenter(valueOrRange, number, generator))
-  //   // Assume only center
-  //   const ROTATION = rotation || 80
-  //   return toScale(
-  //     name,
-  //     center,
-  //     colorsFromEdgesAndCenter(
-  //       rotateHue(ROTATION * -1)(center),
-  //       center,
-  //       rotateHue(ROTATION)(center)
-  //     )
-  //   )
 }
 
 export const scale = configure()

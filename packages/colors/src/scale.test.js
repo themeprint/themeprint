@@ -110,31 +110,29 @@ describe('scale', () => {
     ])
   })
 
-  // it('should allow rotation to be overridden', () => {
-  //   expect(scale(testColor, { generator: rotateHue(20) })).toEqual(['', ''])
-  // })
+  it('should allow rotation to be overridden', () => {
+    expect(scale(testColor, { generator: rotateHue(20) })).toEqual([
+      'hsl(84.13,45.1%,40%)',
+      'hsl(103.7,45.1%,40%)',
+      'hsl(123.91,45.1%,40%)',
+      'hsl(144.13,45.1%,40%)',
+      'hsl(63.91,45.1%,40%)',
+      'hsl(84.13,45.1%,40%)',
+      'hsl(103.7,45.1%,40%)',
+      'hsl(123.91,45.1%,40%)',
+      'hsl(144.13,45.1%,40%)',
+    ])
+  })
 
   // in future support any colors:
   // scale({ 0: color1, 3: color2, 7: color3 }), this would use colorsFromEdges between each
-  // also support overrides after the fact
-  // also support different formats, currently defaults to hsl
+  // also support overrides after the fact, e.g. scale({ start: .., end: ..}, overrides: { 0: white(), 4: .. })
 })
-
-// {
-//   name: '',
-//   number: 9
-//   value: {
-//     index: number => number // takes the scale number and returns an index number, default is middle of scale
-//     generator: // object that returns previous and next functions
-//       previous: color => color,
-//       next: color => color
-//   }
-// }
 
 // have a configure which does:
 // configure(defaultOptions) => scale(valueOrRange, options)
 // and a fromScale:
 // const fromScale = (name, valueOrRange, options) => configure({ name })(valueOrRange, options)
-
-// 1 2 3 4 5 6 7 8 9
-// 0 1 2 3 4
+// this allows ...fromScale('primary', blue()) for example
+// also add OOTB scales, e.g. ...fromScale('primary', scaleBlue()), this checks if param is array, then
+// use that as formatted scale. scaleBlue() returns array of color (object, not formatted string)
