@@ -49,7 +49,27 @@ export const toHsl = value => {
   return stringToHsl(value)
 }
 
-const isHsl = value => {
+export const isColor = value => {
+  if (!value) {
+    return false
+  }
+
+  if (!isObject(value)) {
+    return false
+  }
+
+  if (
+    value.hasOwnProperty('value') &&
+    value.hasOwnProperty('css') &&
+    value.hasOwnProperty('format')
+  ) {
+    return true
+  }
+
+  return false
+}
+
+export const isHsl = value => {
   if (!value) {
     return false
   }
@@ -105,8 +125,11 @@ export const color = obj => {
         }
       }
     },
-    toString: () =>
-      `HSL ${round(value.h)}, ${round(value.s)}%, ${round(value.l)}%`,
+    format: () => ({
+      h: round(value.h),
+      s: round(value.s),
+      l: round(value.l),
+    }),
   }
 }
 

@@ -1,4 +1,4 @@
-import { color } from './colors'
+import { color } from './color'
 import { random } from 'faker'
 
 describe('color', () => {
@@ -144,15 +144,23 @@ describe('color', () => {
     })
   })
 
-  describe('toString', () => {
+  describe('format', () => {
     it('should return HSL string', () => {
       const c = color({ h: 0, s: 60, l: 40 })
-      expect(c.toString()).toEqual('HSL 0, 60%, 40%')
+      expect(c.format()).toEqual({
+        h: 0,
+        s: 60,
+        l: 40,
+      })
     })
 
     it('should return HSL string for decimals', () => {
       const c = color({ h: 0, s: 0.51345, l: 0.55892 })
-      expect(c.toString()).toEqual('HSL 0, 51%, 56%')
+      expect(c.format()).toEqual({
+        h: 0,
+        s: 51,
+        l: 56,
+      })
     })
   })
 })

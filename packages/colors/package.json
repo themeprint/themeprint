@@ -26,6 +26,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@utilz/deepmerge": "^0.1.13",
     "@utilz/types": "^0.1.11",
     "chroma-js": "^2.1.0"
   },
