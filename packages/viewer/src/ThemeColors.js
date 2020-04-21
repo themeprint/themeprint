@@ -11,17 +11,24 @@ const Color = ({ name, color }) => {
       <Box
         css={{
           backgroundColor: color,
-          width: '30px',
-          height: '30px',
-          border: '1px solid #ccc',
+          width: '90px',
+          height: '90px',
+          borderRadius: '5px',
+          boxShadow: 'rgba(0, 0, 0, 0.06) 0px 0px 0px 1.25px inset',
         }}
       />
-      <p>{name}</p>
+      {name && <p>{name}</p>}
       <p>
         HSL {hsl.h}, {hsl.s}%, {hsl.l}%
       </p>
     </Box>
   )
+}
+
+const toColorName = (name, index) => {
+  const prefix = name.split(':')[0]
+  const title = prefix.charAt(0).toUpperCase() + prefix.slice(1)
+  return `${title}${(index + 1) * 100}`
 }
 
 const Swatch = ({ name, colors }) => (
@@ -35,46 +42,27 @@ const Swatch = ({ name, colors }) => (
       }}
     >
       {colors.map((c, i) => (
-        <Color key={i} color={c} />
+        <Color key={i} color={c} name={toColorName(name, i)} />
       ))}
     </Box>
   </React.Fragment>
 )
 
-// TODO: group instead
-const getPalette = colors => {
-  if (!colors) {
-    return []
-  }
-
-  const toValue = (key, name, value) => ({
-    key,
-    name,
-    value: Array.isArray(value) ? value : [value],
-  })
-
-  return Object.keys(colors).map(key => toValue(key, key, colors[key]))
-}
-
-export const ThemeColors = ({ colors }) => {
-  const palette = getPalette(colors)
-
-  return (
-    <Box
-      css={{
-        display: 'grid',
-        alignItems: 'center',
-        gridTemplateColumns: 'auto 1fr',
-        gridGap: '1rem',
-      }}
-    >
-      {palette.map(i => (
-        <Swatch key={i.key} name={i.name} colors={i.value} />
-      ))}
-    </Box>
-  )
-}
+export const ThemeColors = ({ colors }) => (
+  <Box
+    css={{
+      display: 'grid',
+      alignItems: 'center',
+      gridTemplateColumns: 'auto 1fr',
+      gridGap: '1rem',
+    }}
+  >
+    {colors.map(c => (
+      <Swatch key={c.name} name={c.name} colors={c.value} />
+    ))}
+  </Box>
+)
 
 ThemeColors.propTypes = {
-  colors: PropTypes.object.isRequired,
+  colors: PropTypes.array.isRequired,
 }

@@ -4,11 +4,33 @@ import PropTypes from 'prop-types'
 import { jsx } from '@theme-ui/core'
 import { ThemeColors } from './ThemeColors'
 
-export const ThemeViewer = ({ theme }) => (
-  <React.Fragment>
-    {theme.colors && <ThemeColors colors={theme.colors} />}
-  </React.Fragment>
-)
+// TODO: group instead
+const toColors = (seperator, colors) => {
+  if (!colors) {
+    return []
+  }
+
+  return Object.keys(colors).map(key => color(key, colors[key]))
+}
+
+const color = (name, value) => {
+  return {
+    name,
+    value,
+  }
+}
+
+export const ThemeViewer = ({ theme, options = {} }) => {
+  const { seperator } = options
+
+  const colors = toColors(seperator, theme.colors)
+
+  return (
+    <React.Fragment>
+      {theme.colors && <ThemeColors colors={colors} />}
+    </React.Fragment>
+  )
+}
 
 ThemeViewer.propTypes = {
   theme: PropTypes.object.isRequired,
