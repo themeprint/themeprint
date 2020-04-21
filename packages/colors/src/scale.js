@@ -1,19 +1,10 @@
 import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
-import { color, isColor } from './color'
-
-const stringToHsl = hex => {
-  const ch = chroma(hex).hsl()
-  return color({
-    h: isNaN(ch[0]) ? 0 : ch[0],
-    s: ch[1],
-    l: ch[2],
-  })
-}
+import { color, isColor, stringToHsl, toChroma } from './color'
 
 const colorsFromEdges = (start, end, number = 9) => {
   return chroma
-    .scale([start.value, end.value])
+    .scale([toChroma(start.value), toChroma(end.value)])
     .colors(number)
     .map(hex => stringToHsl(hex))
 }
@@ -32,10 +23,12 @@ const colorsFromEdgesAndCenter = (start, center, end, number) => {
   }
 
   const centerIndex = Math.round((number - 1) / 2)
+
   const firstHalf = colorsFromEdges(start, center, centerIndex + 1).slice(
     1,
     centerIndex
   )
+
   const secondHalf = colorsFromEdges(center, end, centerIndex + 1).slice(
     1,
     centerIndex

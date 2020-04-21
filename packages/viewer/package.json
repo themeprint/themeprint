@@ -1,22 +1,23 @@
 {
-  "name": "@themeprint/colors",
+  "name": "@themeprint/viewer",
   "version": "0.1.1-alpha.0",
-  "description": "themeprint colors.",
+  "description": "themeprint part.",
   "private": true,
   "source": "src/index.js",
-  "main": "dist/colors.js",
-  "module": "dist/colors.esm.js",
+  "main": "dist/viewer.js",
+  "module": "dist/viewer.esm.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/themeprint/themeprint.git",
-    "directory": "packages/colors"
+    "directory": "packages/viewer"
   },
-  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/colors#readme",
+  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/viewer#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
     "watch": "microbundle watch --no-compress -o dist",
+    "storybook": "rm -rf ./node_modules/.cache && start-storybook",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
@@ -25,18 +26,23 @@
     "access": "public"
   },
   "dependencies": {
-    "@utilz/deepmerge": "^0.1.13",
-    "@utilz/types": "^0.1.11",
-    "chroma-js": "^2.1.0"
+    "@theme-ui/core": "^0.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@storybook/react": "^5.3.17",
     "@theme-ui/core": "^0.3.1",
+    "@themeprint/colors": "^0.1.1-alpha.0",
     "babel-jest": "^25.1.0",
-    "faker": "^4.1.0",
+    "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
     "microbundle": "^0.11.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.13.1"
+  },
+  "peerDependencies": {
+    "react": "*"
   }
 }
