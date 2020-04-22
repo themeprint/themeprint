@@ -1,6 +1,7 @@
 import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
 import { color, isColor, stringToHsl, toChroma } from './color'
+import { toScaleName } from './scale-name'
 
 const colorsFromEdges = (start, end, number = 9) => {
   return chroma
@@ -133,40 +134,6 @@ export const configure = defaultOptions => (valueOrRange, options) => {
     defaultOptions,
     options
   )
-
-  // Creates a scale name from a name,
-  // e.g. primary -> primary:scale
-  export const toScaleName = seperator => name => {
-    if (!name.includes(seperator)) {
-      throw new Error('Name contains seperator.')
-    }
-
-    return `${name}${seperator}scale`
-  }
-
-  export const isScaleName = seperator => scaleName => {
-    if (!seperator) {
-      throw new Error('No seperator provided.')
-    }
-
-    if (!scaleName) {
-      return false
-    }
-
-    var regex = new RegExp(`^[^${seperator}s]+${seperator}scale$`, 'g')
-    return regex.test(scaleName)
-  }
-
-  // Returns the name given a scale name,
-  // e.g. primary:scale -> primary
-  export const fromScaleName = seperator => scaleName => {
-    if (!isScaleName(seperator)(scaleName)) {
-      throw new Error('Unexpected scale name.')
-    }
-
-    const parts = scaleName.split(seperator)
-    return parts[0]
-  }
 
   // TODO: validate resolved options
   const { number, name, seperator, format, generator } = resolvedOptions

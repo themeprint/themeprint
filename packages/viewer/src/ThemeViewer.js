@@ -5,7 +5,7 @@ import { jsx } from '@theme-ui/core'
 import { ThemeColors } from './ThemeColors'
 
 // TODO: group instead
-const toColors = (seperator, colors) => {
+const toColors = colors => {
   if (!colors) {
     return []
   }
@@ -21,13 +21,13 @@ const color = (name, value) => {
 }
 
 export const ThemeViewer = ({ theme, options = {} }) => {
-  const { seperator } = options
+  const { seperator = ':' } = options
 
-  const colors = toColors(seperator, theme.colors)
+  const colors = toColors(theme.colors)
 
   return (
     <React.Fragment>
-      {theme.colors && <ThemeColors colors={colors} />}
+      {theme.colors && <ThemeColors seperator={seperator} colors={colors} />}
     </React.Fragment>
   )
 }

@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Styled, Box } from 'theme-ui'
-import { toHsl } from '@themeprint/colors'
+import { toHsl, isScaleName, fromScaleName } from '@themeprint/colors'
 
 const Color = ({ name, color }) => {
   const hsl = toHsl(color).format()
@@ -25,15 +25,22 @@ const Color = ({ name, color }) => {
   )
 }
 
-const toColorName = (name, index) => {
-  const prefix = name.split(':')[0]
+const getColorName = seperator => name => {
+  if (isScaleName(seperator)(name)) {
+    return fromScaleName(seperator)(name)
+  }
+
+  return name
+}
+
+const toColorName = (seperator, name, index) => {
+  const prefix = getColorName(seperator)(name)
   const title = prefix.charAt(0).toUpperCase() + prefix.slice(1)
   return `${title}${(index + 1) * 100}`
 }
 
-const Swatch = ({ name, colors }) => (
-  <React.Fragment>
-    <Styled.p css={{ margin: 0 }}>{name}</Styled.p>
+const Swatch = ({ seperator = ':', name, colors }) => {
+  const content = Array.isArray(colors) ? (
     <Box
       css={{
         display: 'grid',
@@ -42,13 +49,22 @@ const Swatch = ({ name, colors }) => (
       }}
     >
       {colors.map((c, i) => (
-        <Color key={i} color={c} name={toColorName(name, i)} />
+        <Color key={i} color={c} name={toColorName(seperator, name, i)} />
       ))}
     </Box>
-  </React.Fragment>
-)
+  ) : (
+    <Color color={colors} />
+  )
 
-export const ThemeColors = ({ colors }) => (
+  return (
+    <React.Fragment>
+      <Styled.p css={{ margin: 0 }}>{name}</Styled.p>
+      {content}
+    </React.Fragment>
+  )
+}
+
+export const ThemeColors = ({ seperator = ':', colors }) => (
   <Box
     css={{
       display: 'grid',
@@ -58,7 +74,12 @@ export const ThemeColors = ({ colors }) => (
     }}
   >
     {colors.map(c => (
-      <Swatch key={c.name} name={c.name} colors={c.value} />
+      <Swatch
+        key={c.name}
+        seperator={seperator}
+        name={c.name}
+        colors={c.value}
+      />
     ))}
   </Box>
 )
