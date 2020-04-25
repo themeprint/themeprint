@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "commit": "./node_modules/cz-customizable/standalone.js",
-    "test": ":lerna run test --scope={@ribble/layout",
+    "test": ":lerna run test",
     "clean": "lerna clean",
     "bootstrap": "lerna bootstrap",
     "lerna-link": "lerna link",
