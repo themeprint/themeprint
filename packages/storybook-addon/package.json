@@ -5,7 +5,6 @@
   "source": "src/index.js",
   "main": "dist/storybook-addon.js",
   "module": "dist/storybook-addon.esm.js",
-  "private": true,
   "license": "MIT",
   "repository": {
     "type": "git",
