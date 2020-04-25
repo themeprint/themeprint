@@ -1,7 +1,6 @@
 {
   "name": "@themeprint/babel-preset-themeprint",
   "version": "0.1.1-alpha.0",
-  "private": true,
   "description": "themeprint Babel preset.",
   "main": "src/index.js",
   "license": "MIT",

@@ -2,7 +2,6 @@
   "name": "@themeprint/colors",
   "version": "0.1.1-alpha.0",
   "description": "themeprint colors.",
-  "private": true,
   "source": "src/index.js",
   "main": "dist/colors.js",
   "module": "dist/colors.esm.js",

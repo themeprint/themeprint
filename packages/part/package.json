@@ -2,7 +2,6 @@
   "name": "@themeprint/part",
   "version": "0.1.1-alpha.0",
   "description": "themeprint part.",
-  "private": true,
   "source": "src/index.js",
   "main": "dist/part.js",
   "module": "dist/part.esm.js",

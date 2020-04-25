@@ -2,7 +2,6 @@
   "name": "@themeprint/jsx",
   "version": "0.1.1-alpha.0",
   "description": "themeprint Theme UI jsx.",
-  "private": true,
   "source": "src/index.js",
   "main": "dist/jsx.js",
   "module": "dist/jsx.esm.js",
