@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/jsx",
-  "version": "0.1.1-alpha.0",
+  "version": "0.1.1-alpha.1",
   "description": "themeprint Theme UI jsx.",
   "source": "src/index.js",
   "main": "dist/jsx.js",
@@ -25,8 +25,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@themeprint/part": "^0.1.1-alpha.0",
-    "@theme-ui/core": "^0.3.1"
+    "@theme-ui/core": "^0.3.1",
+    "@themeprint/part": "^0.1.1-alpha.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

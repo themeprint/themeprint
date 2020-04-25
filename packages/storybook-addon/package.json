@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/storybook-addon",
-  "version": "0.1.1",
+  "version": "0.1.2-alpha.0",
   "description": "themeprint Storybook addon.",
   "source": "src/index.js",
   "main": "dist/storybook-addon.js",
@@ -25,15 +25,15 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.27",
-    "@themeprint/babel-preset-themeprint": "^0.1.1-alpha.0",
-    "@themeprint/jsx": "^0.1.1-alpha.0",
-    "@themeprint/part": "^0.1.1-alpha.0",
     "@storybook/addons": "^5.3.12",
     "@storybook/api": "^5.3.12",
     "@storybook/client-logger": "^5.3.12",
     "@storybook/components": "^5.3.12",
     "@storybook/core-events": "^5.3.12",
     "@storybook/theming": "^5.3.12",
+    "@themeprint/babel-preset-themeprint": "^0.1.1-alpha.1",
+    "@themeprint/jsx": "^0.1.1-alpha.1",
+    "@themeprint/part": "^0.1.1-alpha.1",
     "@utilz/types": "^0.1.11"
   },
   "devDependencies": {
