@@ -29,7 +29,7 @@ const normaliseHsl = value => {
   }
 
   const normalised = {
-    h: clip(0, 255)(percentage.h),
+    h: clip(0, 359)(percentage.h),
     s: clipPercentage(percentage.s),
     l: clipPercentage(percentage.l),
   }
