@@ -58,7 +58,7 @@ describe('scale', () => {
   })
 
   it('should allow seperator override', () => {
-    const name = random.word()
+    const name = random.word().replace('-', '')
     expect(
       scale({ start: white(), end: black() }, { name, seperator: '-' })
     ).toEqual({
@@ -100,13 +100,13 @@ describe('scale', () => {
     expect(scale(testColor)).toEqual([
       'hsl(144.13,45.1%,40%)',
       'hsl(223.7,45.1%,40%)',
-      'hsl(255,45.1%,40%)',
-      'hsl(255,45.1%,40%)',
+      'hsl(303.91,45.1%,40%)',
+      'hsl(24.13,45.1%,40%)',
       'hsl(63.91,45.1%,40%)',
       'hsl(144.13,45.1%,40%)',
       'hsl(223.7,45.1%,40%)',
-      'hsl(255,45.1%,40%)',
-      'hsl(255,45.1%,40%)',
+      'hsl(303.91,45.1%,40%)',
+      'hsl(24.13,45.1%,40%)',
     ])
   })
 

@@ -56,9 +56,9 @@ describe('color', () => {
     })
 
     it('should clip high hue', () => {
-      expect(color({ h: 300, s: 0.5, l: 0.64 })).toMatchObject({
+      expect(color({ h: 360, s: 0.5, l: 0.64 })).toMatchObject({
         value: {
-          h: 255,
+          h: 359,
           s: 50,
           l: 64,
         },

@@ -11,7 +11,7 @@
   },
   "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/babel-preset-themeprint#readme",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
   },
