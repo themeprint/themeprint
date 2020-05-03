@@ -1,2 +1,3 @@
-export { configureUseTheme, useTheme } from './theme'
-export { configureUseVariant, useVariant } from './variant'
+export * from './theme'
+export * from './variant'
+export * from './default-theme'
