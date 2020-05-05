@@ -43,7 +43,7 @@ describe('scale', () => {
     const name = random.word()
     expect(scale({ start: white(), end: black() }, { name })).toEqual({
       [name]: 'hsl(0,0%,50.2%)',
-      [`${name}:scale`]: [
+      [`${name}-scale`]: [
         'hsl(0,0%,100%)',
         'hsl(0,0%,87.45%)',
         'hsl(0,0%,74.9%)',
@@ -58,12 +58,12 @@ describe('scale', () => {
   })
 
   it('should allow seperator override', () => {
-    const name = random.word().replace('-', '')
+    const name = random.word().replace('_', '')
     expect(
-      scale({ start: white(), end: black() }, { name, seperator: '-' })
+      scale({ start: white(), end: black() }, { name, seperator: '_' })
     ).toEqual({
       [name]: 'hsl(0,0%,50.2%)',
-      [`${name}-scale`]: [
+      [`${name}_scale`]: [
         'hsl(0,0%,100%)',
         'hsl(0,0%,87.45%)',
         'hsl(0,0%,74.9%)',

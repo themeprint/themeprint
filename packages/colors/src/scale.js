@@ -128,7 +128,7 @@ export const configure = defaultOptions => (valueOrRange, options) => {
     {
       number: 9,
       generator: rotateHue(80),
-      seperator: ':',
+      seperator: '-',
       format: defaultFormatter,
     },
     defaultOptions,

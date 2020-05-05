@@ -39,7 +39,7 @@ const toColorName = (seperator, name, index) => {
   return `${title}${(index + 1) * 100}`
 }
 
-const Swatch = ({ seperator = ':', name, colors }) => {
+const Swatch = ({ seperator = '-', name, colors }) => {
   const content = Array.isArray(colors) ? (
     <Box
       css={{
@@ -64,7 +64,7 @@ const Swatch = ({ seperator = ':', name, colors }) => {
   )
 }
 
-export const ThemeColors = ({ seperator = ':', colors }) => (
+export const ThemeColors = ({ seperator = '-', colors }) => (
   <Box
     css={{
       display: 'grid',

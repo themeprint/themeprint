@@ -21,7 +21,7 @@ const color = (name, value) => {
 }
 
 export const ThemeViewer = ({ theme, options = {} }) => {
-  const { seperator = ':' } = options
+  const { seperator = '-' } = options
 
   const colors = toColors(theme.colors)
 
