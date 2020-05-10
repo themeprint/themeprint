@@ -8,34 +8,30 @@ const defaultFallback = ({ message, value, theme }) => {
   throw new Error(message)
 }
 
-const resolveColor = ({ value, theme, fallback, scaleSeparator }) => {
-  if (!isObject(value)) {
-    throw new Error('Not implemented.')
-  }
-
-  const scaleName = `${value.name}${scaleSeparator}scale`
-
+// Gets the scale from the theme
+// E.g. getScale({ theme, 'colors.primary-scale' })
+const getScale = ({ theme, property }) => {
   if (!theme) {
     return fallback({ message: 'No theme provided.', value, theme })
   }
 
-  if (!theme.colors) {
+  if (!theme[property]) {
     return fallback({
-      message: 'No theme colors property found.',
+      message: `No theme ${property} property found.`,
       value,
       theme,
     })
   }
 
-  if (!theme.colors.hasOwnProperty(scaleName)) {
+  if (!theme[property].hasOwnProperty(scaleName)) {
     return fallback({
-      message: `No colors property scale found on the theme with name '${scaleName}.`,
+      message: `No scale found on the theme under property '${property}' with name '${scaleName}.`,
       value,
       theme,
     })
   }
 
-  const range = theme.colors[scaleName]
+  const range = theme[property][scaleName]
   if (value.index < 0 || value.index >= range.length) {
     return fallback({
       message: `Index value '${value.index}' is out of range for the theme colors property ${scaleName}.`,
@@ -45,6 +41,16 @@ const resolveColor = ({ value, theme, fallback, scaleSeparator }) => {
   }
 
   return range[value.index]
+}
+
+const resolveScale = ({ value, theme, property, fallback, scaleSeparator }) => {
+  if (!isObject(value)) {
+    throw new Error('Not implemented.')
+  }
+
+  const scaleName = `${value.name}${scaleSeparator}scale`
+
+  return resolveScaleValue()
 }
 
 // e.g. id is 'app' or 'lib'
@@ -58,7 +64,13 @@ const defaultResolver = ({ id, fallback, theme, scaleSeparator }) => ({
 
   switch (type) {
     case 'color':
-      return resolveColor({ value, theme, fallback, scaleSeparator })
+      return resolveScale({
+        property: 'colors',
+        value,
+        theme,
+        fallback,
+        scaleSeparator,
+      })
     default:
       throw new Error(`Unknown type to resolve '${type}'.`)
   }
@@ -101,7 +113,12 @@ const getSizeIndex = sizeName => {
 export const color = options => value => theme => {
   const { id = defaultId, fallback = defaultFallback } = options
   const {
-    resolver = defaultResolver({ id, fallback, theme, scaleSeparator: '-' }),
+    resolver = defaultResolver({
+      id,
+      fallback,
+      theme,
+      scaleSeparator: defaultScaleSeperator,
+    }),
   } = options
   return resolver({ type: 'color', value })
 }
@@ -111,7 +128,10 @@ export const scale = (name, index) => ({
   index,
 })
 
-export const space = ({ fallback }) => sizeName => theme => {
+export const space = ({ fallback }) => value => theme => {
+  if (!theme) {
+    return fallback({ message: 'No theme provided.', value, theme })
+  }
   // TODO inspect theme
   const index = getSizeIndex(sizeName)
   return `${theme.space[index]}px`
