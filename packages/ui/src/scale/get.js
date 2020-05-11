@@ -11,7 +11,7 @@ export const get = (obj, key, fallback, notfound, index, undef) => {
   let currentObj = obj
 
   for (index = 0; index < keyArray.length; index++) {
-    if (currentObj.hasOwnProperty(keyArray[index])) {
+    if (currentObj && currentObj.hasOwnProperty(keyArray[index])) {
       currentObj = currentObj[keyArray[index]]
       continue
     }

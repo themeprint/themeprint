@@ -41,7 +41,7 @@ describe('scale functions', () => {
 
     it('should throw no colors property when no colors property on theme', () => {
       expect(() => color(scale('primary', 1))({})).toThrow(
-        'No theme colors property found.'
+        `No scale found on theme at 'colors.primary-scale'.`
       )
     })
 
@@ -60,7 +60,27 @@ describe('scale functions', () => {
     const { space } = configure()
 
     it('should throw no theme when no theme provided', () => {
-      expect(() => space(0)()).toThrow('foo')
+      expect(() => space(0)()).toThrow('No theme provided.')
+    })
+
+    it('should throw no theme when no space property on theme', () => {
+      expect(() => space(0)({})).toThrow(`No scale found on theme at 'space'.`)
+    })
+
+    it('should return expected theme value when space index present', () => {
+      expect(
+        space(1)({
+          space: [0, 10, 20, 30],
+        })
+      ).toEqual(10)
+    })
+
+    it('should return expected theme value when space size present', () => {
+      expect(
+        space('xs')({
+          space: [0, 10, 20, 30],
+        })
+      ).toEqual(20)
     })
   })
 })
