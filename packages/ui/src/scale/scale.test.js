@@ -67,7 +67,7 @@ describe('scale functions', () => {
       expect(() => space(0)({})).toThrow(`No scale found on theme at 'space'.`)
     })
 
-    it('should throw when on parameter provided', () => {
+    it('should throw when no parameter provided', () => {
       expect(() => space()({})).toThrow('No parameters specified.')
     })
 
@@ -83,6 +83,40 @@ describe('scale functions', () => {
       expect(
         space('xs')({
           space: [0, 10, 20, 30],
+        })
+      ).toEqual(20)
+    })
+  })
+
+  describe('font', () => {
+    const { font } = configure()
+
+    it('should throw no theme when no theme provided', () => {
+      expect(() => font(0)()).toThrow('No theme provided.')
+    })
+
+    it('should throw no theme when no space property on theme', () => {
+      expect(() => font(0)({})).toThrow(
+        `No scale found on theme at 'fontSize'.`
+      )
+    })
+
+    it('should throw when no parameter provided', () => {
+      expect(() => font()({})).toThrow('No parameters specified.')
+    })
+
+    it('should return expected theme value when fontSize index present', () => {
+      expect(
+        font(1)({
+          fontSize: [0, 10, 20, 30],
+        })
+      ).toEqual(10)
+    })
+
+    it('should return expected theme value when fontSize size present', () => {
+      expect(
+        font('xs')({
+          fontSize: [0, 10, 20, 30],
         })
       ).toEqual(20)
     })
