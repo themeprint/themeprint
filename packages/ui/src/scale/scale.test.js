@@ -1,4 +1,4 @@
-import { configure, scale } from './scale'
+import { configure } from './scale'
 
 describe('scale functions', () => {
   describe('configure', () => {
@@ -11,16 +11,9 @@ describe('scale functions', () => {
       })
     })
 
-    // TODO: implement string value support, both 'primary'
-    // and 'primary100' to 'primary900' case insensitive
-    it('color function should throw not implemented on string value', () => {
-      const { color } = configure()
-      expect(() => color('primary')()).toThrow('Not implemented.')
-    })
-
     it('color function should return theme color', () => {
       const { color } = configure()
-      const func = color(scale('primary', 1))
+      const func = color('primary', 1)
 
       const theme = {
         colors: {
@@ -36,18 +29,21 @@ describe('scale functions', () => {
     const { color } = configure()
 
     it('should throw no theme when no theme provided', () => {
-      expect(() => color(scale('primary', 1))()).toThrow('No theme provided.')
+      expect(() => color('primary', 1)()).toThrow('No theme provided.')
     })
 
     it('should throw no colors property when no colors property on theme', () => {
-      expect(() => color(scale('primary', 1))({})).toThrow(
+      expect(() => color('primary', 1)({})).toThrow(
         `No scale found on theme at 'colors.primary-scale'.`
       )
     })
 
     it('should return expected scale value using index', () => {
       expect(
-        color(scale('primary', 1))({
+        color(
+          'primary',
+          1
+        )({
           colors: {
             ['primary-scale']: [0, 1, 2, 3],
           },

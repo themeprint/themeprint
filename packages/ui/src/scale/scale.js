@@ -1,3 +1,5 @@
+import { defaultResolver } from './resolver'
+
 const defaultId = 'app'
 
 const defaultScaleSeperator = '-'
@@ -10,10 +12,11 @@ const defaultSetup = type => options => (...params) => theme => {
   const { id = defaultId, fallback = defaultFallback } = options
   const {
     resolver = defaultResolver({
+      scaleSeparator: defaultScaleSeperator,
+    })({
       id,
       fallback,
       theme,
-      scaleSeparator: defaultScaleSeperator,
     }),
   } = options
   return resolver({ type, params })
@@ -23,11 +26,6 @@ export const color = defaultSetup('color')
 export const space = defaultSetup('space')
 export const font = defaultSetup('font')
 export const border = defaultSetup('border')
-
-export const scale = (name, index) => ({
-  name,
-  index,
-})
 
 export const configure = (options = {}) => {
   const { fallback = defaultFallback } = options

@@ -1,4 +1,5 @@
-import { isObject } from '@utilz/types'
+import { isString } from '@utilz/types'
+import { getSizeIndex } from './size'
 import { get } from './get'
 
 // Gets the scale from the theme
@@ -41,41 +42,61 @@ const resolveScale = ({ theme, property, index }) => {
   return scale[index]
 }
 
+const resolveColor = ({ theme, params, options }) => {
+  const name = params[0]
+  const index = params[1]
+
+  return resolveScale({
+    theme,
+    property: `colors.${name}${options.scaleSeparator}scale`,
+    index,
+  })
+}
+
+const resolveSpace = ({ theme, params }) => {
+  return resolveScale({
+    theme,
+    property: 'space',
+    index: isString(params[0]) ? getSizeIndex(params[0]) : params[0],
+  })
+}
+
+const resolveFont = ({ theme, params }) => {
+  return resolveScale({
+    theme,
+    property: 'font',
+    index: isString(params[0]) ? getSizeIndex(params[0]) : params[0],
+  })
+}
+
+const resolveBorder = ({ theme, params }) => {
+  throw new Error('Not implemented')
+}
+
 // e.g. id is 'app' or 'lib'
 // type is 'font', 'space', etc.
 // value can be any value
-export const defaultResolver = ({ id, fallback, theme, scaleSeparator }) => ({
+export const defaultResolver = options => ({ id, fallback, theme }) => ({
   type,
   params,
 }) => {
   // TODO: support both object value of { name, index } and string values
 
-  switch (type) {
-    case 'color':
-      try {
-        if (!isObject(params[0])) {
-          throw new Error('Not implemented.')
-        }
+  const typeMap = {
+    color: props => resolveColor(props),
+    space: props => resolveSpace(props),
+    font: props => resolveFont(props),
+    border: props => resolveBorder(props),
+  }
 
-        return resolveScale({
-          theme,
-          property: `colors.${params[0].name}${scaleSeparator}scale`,
-          index: params[0].index,
-        })
-      } catch (error) {
-        return fallback({ message: error.message, params, theme })
-      }
-    case 'space':
-      try {
-        return resolveScale({
-          theme,
-          property: 'space',
-          index: isString(params[0]) ? getSizeIndex(params[0]) : params[0],
-        })
-      } catch (error) {
-        return fallback({ message: error.message, params, theme })
-      }
-    default:
-      throw new Error(`Unknown type to resolve '${type}'.`)
+  if (!typeMap[type]) {
+    throw new Error(`Unknown type to resolve '${type}'.`)
+  }
+
+  const func = typeMap[type]
+  try {
+    return func({ theme, params, options })
+  } catch (error) {
+    return fallback({ message: error.message, theme, params })
   }
 }
