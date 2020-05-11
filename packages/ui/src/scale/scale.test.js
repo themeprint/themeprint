@@ -38,6 +38,10 @@ describe('scale functions', () => {
       )
     })
 
+    it('should throw when no parameters sent to color', () => {
+      expect(() => color()({})).toThrow(`No color parameters specified.`)
+    })
+
     it('should return expected scale value using index', () => {
       expect(
         color(
@@ -61,6 +65,10 @@ describe('scale functions', () => {
 
     it('should throw no theme when no space property on theme', () => {
       expect(() => space(0)({})).toThrow(`No scale found on theme at 'space'.`)
+    })
+
+    it('should throw when on parameter provided', () => {
+      expect(() => space()({})).toThrow('No parameters specified.')
     })
 
     it('should return expected theme value when space index present', () => {

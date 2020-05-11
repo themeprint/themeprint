@@ -43,6 +43,11 @@ const resolveScale = ({ theme, property, index }) => {
 }
 
 const resolveColor = ({ theme, params, options }) => {
+  if (!params || params.length === 0) {
+    throw new Error('No color parameters specified.')
+  }
+
+  // TODO: support 'primary', ('primary', 1), ('primary', 100), 'primary1', and 'primary100'
   const name = params[0]
   const index = params[1]
 
@@ -53,21 +58,21 @@ const resolveColor = ({ theme, params, options }) => {
   })
 }
 
-const resolveSpace = ({ theme, params }) => {
+const resolveSize = ({ theme, params, property }) => {
+  if (!params || params.length === 0) {
+    throw new Error('No parameters specified.')
+  }
+
   return resolveScale({
     theme,
-    property: 'space',
+    property,
     index: isString(params[0]) ? getSizeIndex(params[0]) : params[0],
   })
 }
 
-const resolveFont = ({ theme, params }) => {
-  return resolveScale({
-    theme,
-    property: 'font',
-    index: isString(params[0]) ? getSizeIndex(params[0]) : params[0],
-  })
-}
+const resolveSpace = props => resolveSize({ ...props, property: 'space' })
+
+const resolveFont = props => resolveSize({ ...props, property: 'fontSize' })
 
 const resolveBorder = ({ theme, params }) => {
   throw new Error('Not implemented')
@@ -80,8 +85,6 @@ export const defaultResolver = options => ({ id, fallback, theme }) => ({
   type,
   params,
 }) => {
-  // TODO: support both object value of { name, index } and string values
-
   const typeMap = {
     color: props => resolveColor(props),
     space: props => resolveSpace(props),
