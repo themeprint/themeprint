@@ -1,4 +1,4 @@
-import { defaultResolver } from './resolver'
+import { resolver as defaultResolver } from './resolver'
 
 const defaultId = 'app'
 
