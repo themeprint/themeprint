@@ -75,7 +75,22 @@ const resolveSpace = props => resolveSize({ ...props, property: 'space' })
 const resolveFont = props => resolveSize({ ...props, property: 'fontSize' })
 
 const resolveBorder = ({ theme, params }) => {
-  throw new Error('Not implemented')
+  if (!params || params.length === 0) {
+    throw new Error('No parameters specified.')
+  }
+
+  if (!theme) {
+    throw new Error('No theme provided.')
+  }
+
+  if (params.length !== 1 || !isString(params[0])) {
+    throw new Error('Expected single string parameter.')
+  }
+
+  const parts = params[0].split(' ')
+  if (!parts || parts.length !== 3) {
+    throw new Error('Expected three part string parameter.')
+  }
 }
 
 // e.g. id is 'app' or 'lib'

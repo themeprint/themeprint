@@ -121,4 +121,56 @@ describe('scale functions', () => {
       ).toEqual(20)
     })
   })
+
+  describe('border', () => {
+    const { border } = configure()
+
+    it('should throw no theme when no theme provided', () => {
+      expect(() => border('1px solid primary')()).toThrow('No theme provided.')
+    })
+
+    it('should throw no theme when no space property on theme', () => {
+      expect(() => border('1px solid primary')({})).toThrow(
+        `No scale found on theme at 'borders'.`
+      )
+    })
+
+    it('should throw when no parameter provided', () => {
+      expect(() => border()({})).toThrow('Expected single string parameter.')
+    })
+
+    it('should throw when non string paramter provided', () => {
+      expect(() => border(false)({})).toThrow(
+        'Expected single string parameter.'
+      )
+    })
+
+    it('should throw when string paramter contains less than 3 parts', () => {
+      expect(() => border('1px solid')({})).toThrow(
+        'Expected three part string parameter.'
+      )
+    })
+
+    it('should throw when string paramter contains more than 3 parts', () => {
+      expect(() => border('1px solid primary foo')({})).toThrow(
+        'Expected three part string parameter.'
+      )
+    })
+
+    // it('should return expected theme value when fontSize index present', () => {
+    //   expect(
+    //     font(1)({
+    //       fontSize: [0, 10, 20, 30],
+    //     })
+    //   ).toEqual(10)
+    // })
+
+    // it('should return expected theme value when fontSize size present', () => {
+    //   expect(
+    //     font('xs')({
+    //       fontSize: [0, 10, 20, 30],
+    //     })
+    //   ).toEqual(20)
+    // })
+  })
 })
