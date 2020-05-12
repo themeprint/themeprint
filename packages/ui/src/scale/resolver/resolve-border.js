@@ -13,8 +13,14 @@ export const resolveBorder = ({ theme, params }) => {
     throw new Error('Expected single string parameter.')
   }
 
-  const parts = params[0].split(' ')
+  const parts = params[0].split(' ').map(v => v.trim())
   if (!parts || parts.length !== 3) {
     throw new Error('Expected three part string parameter.')
   }
+
+  const borderWidth = parts[0]
+  const borderType = parts[1]
+  const borderColor = parts[2]
+
+  console.log(borderWidth, borderType, borderColor)
 }
