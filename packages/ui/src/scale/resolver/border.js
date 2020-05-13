@@ -1,8 +1,9 @@
 import { isString, isNil } from '@utilz/types'
 import { unit } from './unit'
 import { css } from '@theme-ui/css'
+import { resolveColor } from './color'
 
-export const resolveBorder = ({ theme, params }) => {
+export const resolveBorder = ({ theme, params, options }) => {
   if (isNil(params) || params.length === 0) {
     throw new Error('No parameters specified.')
   }
@@ -16,8 +17,8 @@ export const resolveBorder = ({ theme, params }) => {
   }
 
   const parts = params[0].split(' ').map(v => v.trim())
-  if (!parts || parts.length !== 3) {
-    throw new Error('Expected three part string parameter.')
+  if (isNil(parts) || (parts.length !== 3 && parts.length !== 4)) {
+    throw new Error('Expected three or four part string parameter.')
   }
 
   const borderWidthUnit = unit(parts[0])
@@ -31,12 +32,20 @@ export const resolveBorder = ({ theme, params }) => {
   const cssFunc = css({
     borderWidth: borderWidthUnit.value,
     borderStyle: parts[1],
-    borderColor: parts[2],
+  })
+
+  const hasIndex = parts.length === 4
+  const colorParams = hasIndex ? [parts[2], parts[3]] : [parts[2]]
+  const resolvedBorderColor = resolveColor({
+    theme,
+    params: colorParams,
+    options,
   })
 
   const resolvedValues = cssFunc(theme)
   const resolvedBorderWidth = unit(resolvedValues.borderWidth)
-  return `${resolvedBorderWidth.css()} ${resolvedValues.borderStyle} ${
-    resolvedValues.borderColor
-  }`
+
+  return `${resolvedBorderWidth.css()} ${
+    resolvedValues.borderStyle
+  } ${resolvedBorderColor}`
 }

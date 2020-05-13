@@ -1,7 +1,7 @@
-import { resolveColor } from './resolve-color'
-import { resolveSpace } from './resolve-space'
-import { resolveFont } from './resolve-font'
-import { resolveBorder } from './resolve-border'
+import { resolveColor } from './color'
+import { resolveSpace } from './space'
+import { resolveFont } from './font'
+import { resolveBorder } from './border'
 
 // e.g. id is 'app' or 'lib'
 // type is 'font', 'space', etc.
