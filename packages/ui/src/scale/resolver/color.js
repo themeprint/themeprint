@@ -1,7 +1,8 @@
-import { resolveScale } from './resolve-scale'
+import { isNil } from '@utilz/types'
+import { resolveScale } from './scale'
 
 export const resolveColor = ({ theme, params, options }) => {
-  if (!params || params.length === 0) {
+  if (isNil(params) || params.length === 0) {
     throw new Error('No color parameters specified.')
   }
 
