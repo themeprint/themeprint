@@ -25,6 +25,6 @@ describe('color', () => {
           ['primary-scale']: [0, 1, 2, 3],
         },
       })
-    ).toEqual(1)
+    ).toEqual('1px')
   })
 })

@@ -18,7 +18,7 @@ describe('space', () => {
       space(1)({
         space: [0, 10, 20, 30],
       })
-    ).toEqual(10)
+    ).toEqual('10px')
   })
 
   it('should return expected theme value when space size present', () => {
@@ -26,6 +26,6 @@ describe('space', () => {
       space('xs')({
         space: [0, 10, 20, 30],
       })
-    ).toEqual(20)
+    ).toEqual('20px')
   })
 })

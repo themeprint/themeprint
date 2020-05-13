@@ -20,6 +20,6 @@ describe('configure', () => {
       },
     }
 
-    expect(func(theme)).toEqual(1)
+    expect(func(theme)).toEqual('1px')
   })
 })

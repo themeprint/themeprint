@@ -18,7 +18,7 @@ describe('font', () => {
       font(1)({
         fontSizes: [0, 10, 20, 30],
       })
-    ).toEqual(10)
+    ).toEqual('10px')
   })
 
   it('should return expected theme value when fontSize size present', () => {
@@ -26,6 +26,6 @@ describe('font', () => {
       font('xs')({
         fontSizes: [0, 10, 20, 30],
       })
-    ).toEqual(20)
+    ).toEqual('20px')
   })
 })
