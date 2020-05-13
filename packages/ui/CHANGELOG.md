@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.4](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.3...@themeprint/ui@0.1.1-alpha.4) (2020-05-13)
+
+
+### Bug Fixes
+
+* update exports ([#7](https://github.com/themeprint/themeprint/issues/7)) ([2274a77](https://github.com/themeprint/themeprint/commit/2274a7744fb9b00fc3ca09202c1c8c0c5bfbf20f))
+
+
+
+
+
 ## [0.1.1-alpha.3](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.2...@themeprint/ui@0.1.1-alpha.3) (2020-05-13)
 
 
