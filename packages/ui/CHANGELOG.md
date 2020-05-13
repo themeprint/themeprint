@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.3](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.2...@themeprint/ui@0.1.1-alpha.3) (2020-05-13)
+
+
+### Features
+
+* add scale functions ([#6](https://github.com/themeprint/themeprint/issues/6)) ([67d70c3](https://github.com/themeprint/themeprint/commit/67d70c3e4f45ed8484ea0170113dbdc5692afb96))
+
+
+
+
+
 ## [0.1.1-alpha.2](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.1...@themeprint/ui@0.1.1-alpha.2) (2020-05-03)
 
 
