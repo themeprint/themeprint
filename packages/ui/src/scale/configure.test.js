@@ -16,10 +16,10 @@ describe('configure', () => {
 
     const theme = {
       colors: {
-        ['primary-scale']: [0, 1, 2, 3, 4, 5],
+        ['primary-scale']: ['#f00', '#0f0', '#00f', '#fff'],
       },
     }
 
-    expect(func(theme)).toEqual('1px')
+    expect(func(theme)).toEqual('#0f0')
   })
 })

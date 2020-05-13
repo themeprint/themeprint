@@ -1,5 +1,4 @@
 import { get } from '@utilz/get'
-import { unit } from './unit'
 
 // Gets the scale from the theme
 // E.g. getScale({ theme, 'colors.primary-scale' })
@@ -38,5 +37,5 @@ export const resolveScale = ({ theme, property, index }) => {
     )
   }
 
-  return unit(scale[index]).css()
+  return scale[index]
 }

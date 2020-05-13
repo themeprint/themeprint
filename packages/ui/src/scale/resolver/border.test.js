@@ -15,13 +15,13 @@ describe('border', () => {
 
   it('should throw when string paramter contains less than 3 parts', () => {
     expect(() => border('1px solid')({})).toThrow(
-      'Expected three part string parameter.'
+      'Expected three or four part string parameter.'
     )
   })
 
-  it('should throw when string paramter contains more than 3 parts', () => {
-    expect(() => border('1px solid primary foo')({})).toThrow(
-      'Expected three part string parameter.'
+  it('should throw when string paramter contains more than 4 parts', () => {
+    expect(() => border('1px solid primary foo bar')({})).toThrow(
+      'Expected three or four part string parameter.'
     )
   })
 
@@ -50,5 +50,15 @@ describe('border', () => {
         },
       })
     ).toEqual('2px solid #f00')
+  })
+
+  it('should return expected border value when color scale index is used', () => {
+    expect(
+      border('2px solid primary 2')({
+        colors: {
+          [`primary-scale`]: ['#f00', '#0f0', '#00f'],
+        },
+      })
+    ).toEqual('2px solid #00f')
   })
 })

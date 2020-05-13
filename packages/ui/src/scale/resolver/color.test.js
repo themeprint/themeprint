@@ -22,9 +22,31 @@ describe('color', () => {
         1
       )({
         colors: {
-          ['primary-scale']: [0, 1, 2, 3],
+          ['primary-scale']: ['#f00', '#0f0', '#00f', '#fff'],
         },
       })
-    ).toEqual('1px')
+    ).toEqual('#0f0')
+  })
+
+  it('should return expected value with no index', () => {
+    expect(
+      color('primary')({
+        colors: {
+          ['primary']: '#f00',
+        },
+      })
+    ).toEqual('#f00')
+  })
+
+  // TODO: review, this is default Theme UI behaviour
+  // but may be better to throw instead
+  it('should return raw value when color does not exist on theme', () => {
+    expect(
+      color('secondary')({
+        colors: {
+          ['primary']: '#f00',
+        },
+      })
+    ).toEqual('secondary')
   })
 })
