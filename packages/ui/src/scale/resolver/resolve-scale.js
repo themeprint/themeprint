@@ -1,4 +1,4 @@
-import { get } from './get'
+import { get } from '@utilz/get'
 
 // Gets the scale from the theme
 // E.g. getScale({ theme, 'colors.primary-scale' })

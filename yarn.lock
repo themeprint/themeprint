@@ -3001,6 +3001,11 @@
     "@utilz/types" "^0.1.11"
     deepmerge "^4.2.2"
 
+"@utilz/get@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@utilz/get/-/get-0.1.1.tgz#d29d4c61a3a1347c6d09d2a02282b04a8681ec20"
+  integrity sha512-3RDilpi2/yWvw8z12BjYo0gmqtudkML6ym2jQ9c3PQ8Viv56Por6RgYzXkfhzNVP3RuX6w3mN/qn9MuKeWIAzg==
+
 "@utilz/types@^0.1.11":
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@utilz/types/-/types-0.1.11.tgz#74e3269cdc9f0da1ed96b1feb1c33e5fc83a5a2a"
