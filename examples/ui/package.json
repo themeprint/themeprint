@@ -1,6 +1,6 @@
 {
   "name": "example-ui",
-  "version": "0.1.1-alpha.5",
+  "version": "0.1.1-alpha.6",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -15,7 +15,7 @@
     "babel-loader": "^8.0.6"
   },
   "dependencies": {
-    "@themeprint/ui": "^0.1.1-alpha.5",
+    "@themeprint/ui": "^0.1.1-alpha.6",
     "theme-ui": "^0.3.1"
   }
 }
