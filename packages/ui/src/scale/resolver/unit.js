@@ -74,6 +74,8 @@ export const unit = value => {
     return {
       value: number.value,
       unit: 'px',
+      unitless: true,
+      css: () => `${number.value}px`,
     }
   }
 
@@ -95,6 +97,8 @@ export const unit = value => {
     return {
       value: number.value,
       unit: numParts[1],
+      unitless: false,
+      css: () => `${number.value}${numParts[1]}`,
     }
   }
 

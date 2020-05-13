@@ -1,7 +1,9 @@
-import { isString } from '@utilz/types'
+import { isString, isNil } from '@utilz/types'
+import { unit } from './unit'
+import { css } from '@theme-ui/css'
 
 export const resolveBorder = ({ theme, params }) => {
-  if (!params || params.length === 0) {
+  if (isNil(params) || params.length === 0) {
     throw new Error('No parameters specified.')
   }
 
@@ -18,9 +20,23 @@ export const resolveBorder = ({ theme, params }) => {
     throw new Error('Expected three part string parameter.')
   }
 
-  const borderWidth = parts[0]
-  const borderType = parts[1]
-  const borderColor = parts[2]
+  const borderWidthUnit = unit(parts[0])
 
-  console.log(borderWidth, borderType, borderColor)
+  if (borderWidthUnit.unitless) {
+    if (!theme.borderWidths) {
+      throw new Error(`No scale found on theme at 'borderWidths'.`)
+    }
+  }
+
+  const cssFunc = css({
+    borderWidth: borderWidthUnit.value,
+    borderStyle: parts[1],
+    borderColor: parts[2],
+  })
+
+  const resolvedValues = cssFunc(theme)
+  const resolvedBorderWidth = unit(resolvedValues.borderWidth)
+  return `${resolvedBorderWidth.css()} ${resolvedValues.borderStyle} ${
+    resolvedValues.borderColor
+  }`
 }

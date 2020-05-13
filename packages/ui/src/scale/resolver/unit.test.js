@@ -22,65 +22,74 @@ describe('unit', () => {
   })
 
   it('should return px unit with integer value', () => {
-    expect(unit(0)).toEqual({
+    expect(unit(0)).toMatchObject({
       unit: 'px',
       value: 0,
+      unitless: true,
     })
   })
 
   it('should return px unit for numeric value', () => {
-    expect(unit(1.25)).toEqual({
+    expect(unit(1.25)).toMatchObject({
       unit: 'px',
       value: 1.25,
+      unitless: true,
     })
   })
 
   it('should return px unit for integer with no postfix', () => {
-    expect(unit('0')).toEqual({
+    expect(unit('0')).toMatchObject({
       unit: 'px',
       value: 0,
+      unitless: true,
     })
   })
 
   it('should return px unit for numeric value with no postfix', () => {
-    expect(unit('0.22')).toEqual({
+    expect(unit('0.22')).toMatchObject({
       unit: 'px',
       value: 0.22,
+      unitless: true,
     })
   })
 
   it('should return px unit for numeric value with no postfix', () => {
-    expect(unit('0.22')).toEqual({
+    expect(unit('0.22')).toMatchObject({
       unit: 'px',
       value: 0.22,
+      unitless: true,
     })
   })
 
   it('should return px unit for integer with px', () => {
-    expect(unit('22px')).toEqual({
+    expect(unit('22px')).toMatchObject({
       unit: 'px',
       value: 22,
+      unitless: false,
     })
   })
 
   it('should return px unit for numeric with px', () => {
-    expect(unit('22.42px')).toEqual({
+    expect(unit('22.42px')).toMatchObject({
       unit: 'px',
       value: 22.42,
+      unitless: false,
     })
   })
 
   it('should return % unit for string with %', () => {
-    expect(unit('22%')).toEqual({
+    expect(unit('22%')).toMatchObject({
       unit: '%',
       value: 22,
+      unitless: false,
     })
   })
 
   it('should return ch unit for string with ch', () => {
-    expect(unit('22ch')).toEqual({
+    expect(unit('22ch')).toMatchObject({
       unit: 'ch',
       value: 22,
+      unitless: false,
     })
   })
 

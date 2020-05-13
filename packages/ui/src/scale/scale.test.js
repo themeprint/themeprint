@@ -129,14 +129,8 @@ describe('scale functions', () => {
       expect(() => border('1px solid primary')()).toThrow('No theme provided.')
     })
 
-    it('should throw no theme when no space property on theme', () => {
-      expect(() => border('1px solid primary')({})).toThrow(
-        `No scale found on theme at 'borders'.`
-      )
-    })
-
     it('should throw when no parameter provided', () => {
-      expect(() => border()({})).toThrow('Expected single string parameter.')
+      expect(() => border()({})).toThrow('No parameters specified.')
     })
 
     it('should throw when non string paramter provided', () => {
@@ -157,20 +151,31 @@ describe('scale functions', () => {
       )
     })
 
-    // it('should return expected theme value when fontSize index present', () => {
-    //   expect(
-    //     font(1)({
-    //       fontSize: [0, 10, 20, 30],
-    //     })
-    //   ).toEqual(10)
-    // })
+    it('should return expected border value when borderWidths index present', () => {
+      expect(
+        border('2 solid primary')({
+          borderWidths: [0, 10, 20, 30],
+          colors: {
+            primary: '#f00',
+          },
+        })
+      ).toEqual('20px solid #f00')
+    })
 
-    // it('should return expected theme value when fontSize size present', () => {
-    //   expect(
-    //     font('xs')({
-    //       fontSize: [0, 10, 20, 30],
-    //     })
-    //   ).toEqual(20)
-    // })
+    it('should throw no borderWidths when index value used', () => {
+      expect(() => border('1 solid primary')({})).toThrow(
+        `No scale found on theme at 'borderWidths'.`
+      )
+    })
+
+    it('should return expected border value when unit border width used', () => {
+      expect(
+        border('2px solid primary')({
+          colors: {
+            primary: '#f00',
+          },
+        })
+      ).toEqual('2px solid #f00')
+    })
   })
 })
