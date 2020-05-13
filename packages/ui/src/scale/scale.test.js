@@ -1,4 +1,4 @@
-import { configure } from './scale'
+import { configure, color, space, font, border } from './scale'
 
 describe('scale functions', () => {
   describe('configure', () => {
@@ -26,8 +26,6 @@ describe('scale functions', () => {
   })
 
   describe('color', () => {
-    const { color } = configure()
-
     it('should throw no theme when no theme provided', () => {
       expect(() => color('primary', 1)()).toThrow('No theme provided.')
     })
@@ -57,8 +55,6 @@ describe('scale functions', () => {
   })
 
   describe('space', () => {
-    const { space } = configure()
-
     it('should throw no theme when no theme provided', () => {
       expect(() => space(0)()).toThrow('No theme provided.')
     })
@@ -89,15 +85,13 @@ describe('scale functions', () => {
   })
 
   describe('font', () => {
-    const { font } = configure()
-
     it('should throw no theme when no theme provided', () => {
       expect(() => font(0)()).toThrow('No theme provided.')
     })
 
     it('should throw no theme when no space property on theme', () => {
       expect(() => font(0)({})).toThrow(
-        `No scale found on theme at 'fontSize'.`
+        `No scale found on theme at 'fontSizes'.`
       )
     })
 
@@ -108,7 +102,7 @@ describe('scale functions', () => {
     it('should return expected theme value when fontSize index present', () => {
       expect(
         font(1)({
-          fontSize: [0, 10, 20, 30],
+          fontSizes: [0, 10, 20, 30],
         })
       ).toEqual(10)
     })
@@ -116,15 +110,13 @@ describe('scale functions', () => {
     it('should return expected theme value when fontSize size present', () => {
       expect(
         font('xs')({
-          fontSize: [0, 10, 20, 30],
+          fontSizes: [0, 10, 20, 30],
         })
       ).toEqual(20)
     })
   })
 
   describe('border', () => {
-    const { border } = configure()
-
     it('should throw no theme when no theme provided', () => {
       expect(() => border('1px solid primary')()).toThrow('No theme provided.')
     })

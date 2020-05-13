@@ -9,7 +9,7 @@ export const resolveFont = ({ theme, params }) => {
 
   return resolveScale({
     theme,
-    property: 'fontSize',
+    property: 'fontSizes',
     index: isString(params[0]) ? getSizeIndex(params[0]) : params[0],
   })
 }
