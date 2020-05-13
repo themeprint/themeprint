@@ -22,17 +22,18 @@ const defaultSetup = type => options => (...params) => theme => {
   return resolver({ type, params })
 }
 
-export const color = defaultSetup('color')
-export const space = defaultSetup('space')
-export const font = defaultSetup('font')
-export const border = defaultSetup('border')
-
 export const configure = (options = {}) => {
   const { fallback = defaultFallback } = options
   return {
-    color: color({ fallback }),
-    space: space({ fallback }),
-    font: font({ fallback }),
-    border: border({ fallback }),
+    color: defaultSetup('color')({ fallback }),
+    space: defaultSetup('space')({ fallback }),
+    font: defaultSetup('font')({ fallback }),
+    border: defaultSetup('border')({ fallback }),
   }
 }
+
+const defaultConfiguration = configure()
+export const color = defaultConfiguration.color
+export const space = defaultConfiguration.space
+export const font = defaultConfiguration.font
+export const border = defaultConfiguration.border
