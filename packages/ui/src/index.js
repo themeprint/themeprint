@@ -1,4 +1,5 @@
 export * from './theme'
 export * from './variant'
+export * from './unit'
 export * from './default-theme'
 export * from './scale'

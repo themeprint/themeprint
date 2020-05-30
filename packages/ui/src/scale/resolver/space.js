@@ -1,7 +1,7 @@
 import { isString, isNil } from '@utilz/types'
 import { resolveScale } from './scale'
 import { getSizeIndex } from './size'
-import { unit } from './unit'
+import { unit } from '../../unit'
 
 export const resolveSpace = ({ theme, params }) => {
   if (isNil(params) || params.length === 0) {
