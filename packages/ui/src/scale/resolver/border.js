@@ -1,5 +1,5 @@
 import { isString, isNil } from '@utilz/types'
-import { unit } from './unit'
+import { unit } from '../../unit'
 import { css } from '@theme-ui/css'
 import { resolveColor } from './color'
 
