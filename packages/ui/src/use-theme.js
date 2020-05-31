@@ -13,4 +13,4 @@ export const configureUseTheme = defaultTheme => fallbackTheme => {
   return deepmerge(defaultTheme, fallbackTheme, theme)
 }
 
-export const useTheme = configureUseTheme(defaultTheme)
+export const useTheme = configureUseTheme(theme)

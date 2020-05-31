@@ -4,7 +4,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { useTheme } from './use-theme'
 import { ThemeProvider } from '@theme-ui/core'
 import { random } from 'faker'
-import { defaultTheme } from './default-theme'
+import { theme } from './theme'
 
 const randomTheme = () => ({ [random.word()]: random.word() })
 
@@ -35,7 +35,7 @@ describe('useTheme', () => {
   describe('without theme provider', () => {
     it('should return default theme with no theme provided', () => {
       const { result } = renderHook(() => useTheme())
-      expect(result.current).toEqual(defaultTheme)
+      expect(result.current).toEqual(theme)
     })
 
     it('should return merged theme when theme provided', () => {
