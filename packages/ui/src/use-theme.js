@@ -1,6 +1,6 @@
 import { deepmerge } from '@utilz/deepmerge'
 import { useThemeUI } from '@theme-ui/core'
-import { theme } from './theme'
+import { createTheme } from './theme'
 
 export const configureUseTheme = defaultTheme => fallbackTheme => {
   const context = useThemeUI()
@@ -13,4 +13,4 @@ export const configureUseTheme = defaultTheme => fallbackTheme => {
   return deepmerge(defaultTheme, fallbackTheme, theme)
 }
 
-export const useTheme = configureUseTheme(theme)
+export const useTheme = configureUseTheme(createTheme())

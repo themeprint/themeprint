@@ -34,6 +34,7 @@
     "@storybook/react": "^5.3.17",
     "@theme-ui/core": "^0.3.1",
     "@themeprint/colors": "^0.1.1-alpha.3",
+    "@themeprint/ui": "^0.1.1-alpha.7",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "jest": "^25.1.0",

@@ -3,7 +3,7 @@
 // TODO: review colors
 // const highlight = '#29112c'
 
-export const theme = {
+export const createTheme = () => {
   // ...base,
   // colors: {
   //   ...base.colors,
@@ -19,19 +19,21 @@ export const theme = {
   //     highlight: base.colors.muted,
   //   },
   // },
-  borders: {},
-  borderStyles: {},
-  borderWidths: {},
-  colors: {},
-  fonts: {},
-  fontSizes: {},
-  fontWeights: {},
-  letterSpacings: {},
-  lineHeights: {},
-  opacities: {},
-  radii: {},
-  shadows: {},
-  sizes: {},
-  space: {},
-  zIndices: {},
+  return {
+    borders: {},
+    borderStyles: {},
+    borderWidths: {},
+    colors: {},
+    fonts: {},
+    fontSizes: {},
+    fontWeights: {},
+    letterSpacings: {},
+    lineHeights: {},
+    opacities: {},
+    radii: {},
+    shadows: {},
+    sizes: {},
+    space: {},
+    zIndices: {},
+  }
 }
