@@ -53,14 +53,6 @@ describe('unit', () => {
     })
   })
 
-  it('should return px unit for numeric value with no postfix', () => {
-    expect(unit('0.22')).toMatchObject({
-      unit: 'px',
-      value: 0.22,
-      unitless: true,
-    })
-  })
-
   it('should return px unit for integer with px', () => {
     expect(unit('22px')).toMatchObject({
       unit: 'px',
@@ -103,7 +95,7 @@ describe('unit', () => {
     expect(() => unit('22pf')).toThrow(`The value '22pf' is not a valid unit.`)
   })
 
-  it('should throw for not leading numeric value', () => {
+  it('should throw for non leading numeric value', () => {
     expect(() => unit('foo22')).toThrow(
       `The value 'foo22' is not a valid unit.`
     )

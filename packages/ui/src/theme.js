@@ -1,16 +1,24 @@
-import { deepmerge } from '@utilz/deepmerge'
-import { useThemeUI } from '@theme-ui/core'
-import { defaultTheme } from './default-theme'
+import { base } from '@theme-ui/preset-base'
 
-export const configureUseTheme = defaultTheme => fallbackTheme => {
-  const context = useThemeUI()
+// TODO: add invert option to enrich function
+// which dynamically adds dark mode
+// TODO: review colors
+const highlight = '#29112c'
 
-  if (!context) {
-    return deepmerge(defaultTheme, fallbackTheme)
-  }
-
-  const { theme } = context
-  return deepmerge(defaultTheme, fallbackTheme, theme)
+export const theme = {
+  ...base,
+  colors: {
+    ...base.colors,
+    highlight,
+  },
+  modes: {
+    dark: {
+      primary: base.colors.muted,
+      secondary: base.colors.primary,
+      text: base.colors.background,
+      background: base.colors.text,
+      muted: highlight,
+      highlight: base.colors.muted,
+    },
+  },
 }
-
-export const useTheme = configureUseTheme(defaultTheme)

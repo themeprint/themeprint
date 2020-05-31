@@ -1,77 +1,32 @@
-import React from 'react'
-import { render } from '@testing-library/react'
-import { renderHook } from '@testing-library/react-hooks'
-import { useTheme } from './theme'
-import { ThemeProvider } from '@theme-ui/core'
-import { random } from 'faker'
-import { defaultTheme } from './default-theme'
+import { theme } from './theme'
+import each from 'jest-each'
 
-const randomTheme = () => ({ [random.word()]: random.word() })
+describe('theme', () => {
+  const expectedColors = [
+    'primary',
+    'secondary',
+    'text',
+    'background',
+    'muted',
+    'highlight',
+  ]
 
-const Component = ({ render, usage }) => {
-  const theme = usage()
-  return render(theme)
-}
-
-const renderTheme = ({ themeProviderTheme, usage }) => {
-  let renderedTheme = null
-
-  render(
-    <ThemeProvider theme={themeProviderTheme}>
-      <Component
-        usage={usage}
-        render={t => {
-          renderedTheme = t
-          return <div />
-        }}
-      />
-    </ThemeProvider>
-  )
-
-  return renderedTheme
-}
-
-describe('useTheme', () => {
-  describe('without theme provider', () => {
-    it('should return default theme with no theme provided', () => {
-      const { result } = renderHook(() => useTheme())
-      expect(result.current).toEqual(defaultTheme)
-    })
-
-    it('should return merged theme when theme provided', () => {
-      const theme = randomTheme()
-      const { result } = renderHook(() => useTheme(theme))
-      expect(result.current).toEqual(expect.objectContaining(theme))
-    })
+  each(expectedColors.map(c => [c])).it(`contains color '%s'`, color => {
+    expect(theme.colors[color]).toBeTruthy()
   })
 
-  describe('with theme provider', () => {
-    it('should return theme provider theme merged with default when no theme provided', () => {
-      const theme = randomTheme()
+  each(expectedColors.map(c => [c])).it(
+    `contains dark mode color '%s'`,
+    color => {
+      expect(theme.modes.dark[color]).toBeTruthy()
+    }
+  )
 
-      const renderedTheme = renderTheme({
-        themeProviderTheme: theme,
-        usage: () => useTheme(),
-      })
+  it('should contain space scale', () => {
+    expect(theme.space.length).toEqual(9)
+  })
 
-      expect(renderedTheme).toEqual(expect.objectContaining(theme))
-    })
-
-    it('should return theme provider theme merged with default and provided theme', () => {
-      const themeProviderTheme = randomTheme()
-      const theme = randomTheme()
-
-      const renderedTheme = renderTheme({
-        themeProviderTheme,
-        usage: () => useTheme(theme),
-      })
-
-      expect(renderedTheme).toEqual(
-        expect.objectContaining({
-          ...themeProviderTheme,
-          ...theme,
-        })
-      )
-    })
+  it('should contain font scale', () => {
+    expect(theme.fontSizes.length).toEqual(9)
   })
 })
