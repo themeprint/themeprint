@@ -25,7 +25,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@theme-ui/core": "^0.3.1"
+    "@theme-ui/core": "^0.3.1",
+    "@utilz/types": "^0.1.11"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

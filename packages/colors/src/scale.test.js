@@ -97,11 +97,3 @@ describe('scale', () => {
   // scale({ 0: color1, 3: color2, 7: color3 }), this would use colorsFromEdges between each
   // also support overrides after the fact, e.g. scale({ start: .., end: ..}, overrides: { 0: white(), 4: .. })
 })
-
-// have a configure which does:
-// configure(defaultOptions) => scale(valueOrRange, options)
-// and a fromScale:
-// const fromScale = (name, valueOrRange, options) => configure({ name })(valueOrRange, options)
-// this allows ...fromScale('primary', blue()) for example
-// also add OOTB scales, e.g. ...fromScale('primary', scaleBlue()), this checks if param is array, then
-// use that as formatted scale. scaleBlue() returns array of color (object, not formatted string)

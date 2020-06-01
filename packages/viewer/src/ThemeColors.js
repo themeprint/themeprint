@@ -39,7 +39,7 @@ const toColorName = (seperator, name, index) => {
   return `${title}${(index + 1) * 100}`
 }
 
-const Swatch = ({ seperator = '-', name, colors }) => {
+const Swatch = ({ name, colors }) => {
   const content = Array.isArray(colors) ? (
     <Box
       css={{
@@ -48,9 +48,9 @@ const Swatch = ({ seperator = '-', name, colors }) => {
         gridColumnGap: '1rem',
       }}
     >
-      {colors.map((c, i) => (
+      {/* {colors.map((c, i) => (
         <Color key={i} color={c} name={toColorName(seperator, name, i)} />
-      ))}
+      ))} */}
     </Box>
   ) : (
     <Color color={colors} />
@@ -64,26 +64,29 @@ const Swatch = ({ seperator = '-', name, colors }) => {
   )
 }
 
-export const ThemeColors = ({ seperator = '-', colors }) => (
-  <Box
-    css={{
-      display: 'grid',
-      alignItems: 'center',
-      gridTemplateColumns: 'auto 1fr',
-      gridGap: '1rem',
-    }}
-  >
-    {colors.map(c => (
-      <Swatch
-        key={c.name}
-        seperator={seperator}
-        name={c.name}
-        colors={c.value}
-      />
-    ))}
-  </Box>
-)
+export const ThemeColors = ({ colors }) => {
+  console.log(colors)
+
+  return (
+    <Box
+      css={{
+        display: 'grid',
+        alignItems: 'center',
+        gridTemplateColumns: 'auto 1fr',
+        gridGap: '1rem',
+      }}
+    >
+      {colors.map(c => (
+        <Swatch key={c.name} name={c.name} colors={c.value} />
+      ))}
+    </Box>
+  )
+}
 
 ThemeColors.propTypes = {
   colors: PropTypes.array.isRequired,
+}
+
+ThemeColors.defaultProps = {
+  colors: [],
 }

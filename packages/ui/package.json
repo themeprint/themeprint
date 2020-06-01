@@ -27,7 +27,8 @@
     "@theme-ui/core": "^0.3.1",
     "@theme-ui/css": "^0.3.1",
     "@utilz/deepmerge": "^0.1.13",
-    "@utilz/get": "^0.1.1"
+    "@utilz/get": "^0.1.1",
+    "@utilz/types": "^0.1.12"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

@@ -1,8 +1,7 @@
 import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
 import { isObject } from '@utilz/types'
-import { color, isColor, stringToHsl, toChroma } from './color'
-import { toScaleName } from './scale-name'
+import { color, stringToHsl, toChroma } from './color'
 
 const colorsFromEdges = (start, end, number = 9) => {
   return chroma
@@ -153,13 +152,6 @@ export const configure = defaultOptions => (value, options) => {
   const { number, format, generator } = resolvedOptions
 
   const result = scale => {
-    // if (name) {
-    //   return {
-    //     [name]: format(value),
-    //     [toScaleName(seperator)(name)]: scale.map(c => format(c)),
-    //   }
-    // }
-
     // TODO: support type 'array' or 'object'
     // default to object, so return { xxs: .., xs: .. etc. }
     // if type is array, return scale.map(c => format(c))
