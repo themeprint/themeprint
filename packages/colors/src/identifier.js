@@ -1,24 +1,45 @@
-import { isString, isNil } from '@utilz/types'
+import { isString, isNil, numeric } from '@utilz/types'
+
+const chars = value => /^[a-zA-Z]+$/.test(value)
 
 // Provides parsing and formatting support for a color identifier
 // made up of name and index, e.g. primary300
 export const identifier = value => {
   if (isNil(value)) {
-    throw new Error('No value specified.')
+    return undefined
   }
 
   if (!isString(value)) {
-    throw new Error('Value must be a string.')
+    return undefined
   }
 
   if (value === '') {
+    return undefined
+  }
+
+  const split = value.split(/^([a-zA-Z]+)/).filter(v => v)
+
+  if (split.length === 1 && chars(split[0])) {
     return {
-      name: undefined,
+      name: split[0],
       index: undefined,
+      format: () => `${split[0]}`,
     }
   }
 
-  // const split = value.split(/([0-9]+)/)
-  const split = value.split(/^([a-zA-Z]+)/)
-  console.log(split)
+  if (split.length !== 2) {
+    return undefined
+  }
+
+  const index = numeric(split[1])
+
+  if (!index.isValid) {
+    return undefined
+  }
+
+  return {
+    name: split[0],
+    index: index.value,
+    format: () => `${split[0]}${index.value}`,
+  }
 }

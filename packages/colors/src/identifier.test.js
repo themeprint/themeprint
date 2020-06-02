@@ -1,67 +1,56 @@
 import { identifier } from './identifier'
 
-describe('splitNumeric', () => {
+describe('identifier', () => {
   it('should throw given undefined', () => {
-    expect(() => splitNumeric()).toThrow('No value specified.')
+    expect(identifier()).toEqual(undefined)
   })
 
   it('should throw given null', () => {
-    expect(() => splitNumeric(null)).toThrow('No value specified.')
+    expect(identifier(null)).toEqual(undefined)
   })
 
   it('should throw given boolean', () => {
-    expect(() => splitNumeric(false)).toThrow('Value must be a string.')
+    expect(identifier(false)).toEqual(undefined)
   })
 
   it('should throw given object', () => {
-    expect(() => splitNumeric({})).toThrow('Value must be a string.')
+    expect(identifier({})).toEqual(undefined)
   })
 
   it('should throw given array', () => {
-    expect(() => splitNumeric([])).toThrow('Value must be a string.')
+    expect(identifier([])).toEqual(undefined)
   })
 
   it('should return empty values for empty string', () => {
-    expect(splitNumeric('')).toEqual({
-      string: undefined,
-      number: undefined,
-    })
+    expect(identifier('')).toEqual(undefined)
   })
 
   it('should return expected values for string', () => {
-    expect(splitNumeric('primary500')).toEqual({
-      string: 'primary',
-      number: 500,
+    expect(identifier('primary500')).toEqual({
+      name: 'primary',
+      index: 500,
     })
   })
 
   it('should return expected values for single digit', () => {
-    expect(splitNumeric('primary5')).toEqual({
-      string: 'primary',
-      number: 5,
+    expect(identifier('primary5')).toEqual({
+      name: 'primary',
+      index: 5,
     })
   })
 
   it('should return expected string for no digits', () => {
-    expect(splitNumeric('primary')).toEqual({
-      string: 'primary',
-      number: undefined,
+    expect(identifier('primary')).toEqual({
+      name: 'primary',
+      index: undefined,
     })
   })
 
   it('should return invalid result for non digits', () => {
-    expect(splitNumeric('primary500t')).toEqual({
-      isValid: false,
-      string: 'primary',
-      number: '500t',
-    })
+    expect(identifier('primary500t')).toEqual(undefined)
   })
 
   it('should return invalid result for space prefix', () => {
-    expect(splitNumeric(' primary500')).toEqual({
-      isValid: false,
-      string: 'primary',
-      number: ' 500',
-    })
+    expect(identifier(' primary500')).toEqual(undefined)
   })
 })

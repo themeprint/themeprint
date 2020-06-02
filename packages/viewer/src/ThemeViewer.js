@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { jsx } from '@theme-ui/core'
 import { ThemeColors } from './ThemeColors'
 
-// // TODO: group instead
 const toColors = colors => {
   if (!colors) {
     return []
