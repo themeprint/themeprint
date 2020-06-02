@@ -1,4 +1,4 @@
-import { splitNumeric } from './string'
+import { identifier } from './identifier'
 
 describe('splitNumeric', () => {
   it('should throw given undefined', () => {

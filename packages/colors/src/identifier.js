@@ -1,6 +1,8 @@
 import { isString, isNil } from '@utilz/types'
 
-export const splitNumeric = value => {
+// Provides parsing and formatting support for a color identifier
+// made up of name and index, e.g. primary300
+export const identifier = value => {
   if (isNil(value)) {
     throw new Error('No value specified.')
   }
@@ -11,8 +13,8 @@ export const splitNumeric = value => {
 
   if (value === '') {
     return {
-      string: undefined,
-      number: undefined,
+      name: undefined,
+      index: undefined,
     }
   }
 
