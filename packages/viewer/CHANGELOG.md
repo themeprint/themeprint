@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.4](https://github.com/themeprint/themeprint/compare/@themeprint/viewer@0.1.1-alpha.3...@themeprint/viewer@0.1.1-alpha.4) (2020-06-04)
+
+
+### Bug Fixes
+
+* update scales to use objects ([#11](https://github.com/themeprint/themeprint/issues/11)) ([cf98fd0](https://github.com/themeprint/themeprint/commit/cf98fd0afd9cf4c4faa7853b10e2224f9b1ef4df))
+
+
+
+
+
 ## [0.1.1-alpha.3](https://github.com/themeprint/themeprint/compare/@themeprint/viewer@0.1.1-alpha.2...@themeprint/viewer@0.1.1-alpha.3) (2020-05-05)
 
 

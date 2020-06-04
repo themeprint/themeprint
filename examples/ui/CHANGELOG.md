@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.8](https://github.com/themeprint/themeprint/compare/example-ui@0.1.1-alpha.7...example-ui@0.1.1-alpha.8) (2020-06-04)
+
+**Note:** Version bump only for package example-ui
+
+
+
+
+
 ## [0.1.1-alpha.7](https://github.com/themeprint/themeprint/compare/example-ui@0.1.1-alpha.6...example-ui@0.1.1-alpha.7) (2020-05-30)
 
 **Note:** Version bump only for package example-ui
