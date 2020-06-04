@@ -3011,6 +3011,11 @@
   resolved "https://registry.yarnpkg.com/@utilz/types/-/types-0.1.11.tgz#74e3269cdc9f0da1ed96b1feb1c33e5fc83a5a2a"
   integrity sha512-VwEuaY9IWiTcG97PE8Tqhhj7rak64v/IK+Id4gbCJjukIM0Q1jUzPySwa2DF+uJkPq0IDo+xkNvwfb+XLsqDmg==
 
+"@utilz/types@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@utilz/types/-/types-0.1.12.tgz#b9168aac12690e017b702abf3945293ebe4f7ff4"
+  integrity sha512-wy+ucLYuLVw2RwTFLsXi5cmNF0a0Mg7SMWFYkfIkMRSConYv5py4MLDTGy6vIPKRieb9ZEjMzAHP8DYlf9aZjA==
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -11720,6 +11725,11 @@ ramda@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
+
+ramda@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.0.tgz#915dc29865c0800bf3f69b8fd6c279898b59de43"
+  integrity sha512-pVzZdDpWwWqEVVLshWUHjNwuVP7SfcmPraYuqocJp1yo2U1R7P+5QAfDhdItkuoGqIBnBYrtPp7rEPqDn9HlZA==
 
 randomatic@^3.0.0:
   version "3.1.1"

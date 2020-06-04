@@ -2,7 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Styled, Box } from 'theme-ui'
-import { toHsl, isScaleName, fromScaleName } from '@themeprint/colors'
+import { toHsl } from '@themeprint/colors'
+import { groupBy } from 'ramda'
+import { identifier } from '@themeprint/colors'
 
 const Color = ({ name, color }) => {
   const hsl = toHsl(color).format()
@@ -25,22 +27,8 @@ const Color = ({ name, color }) => {
   )
 }
 
-const getColorName = seperator => name => {
-  if (isScaleName(seperator)(name)) {
-    return fromScaleName(seperator)(name)
-  }
-
-  return name
-}
-
-const toColorName = (seperator, name, index) => {
-  const prefix = getColorName(seperator)(name)
-  const title = prefix.charAt(0).toUpperCase() + prefix.slice(1)
-  return `${title}${(index + 1) * 100}`
-}
-
-const Swatch = ({ seperator = '-', name, colors }) => {
-  const content = Array.isArray(colors) ? (
+const Swatch = ({ name, colors }) => {
+  const content = (
     <Box
       css={{
         display: 'grid',
@@ -49,11 +37,9 @@ const Swatch = ({ seperator = '-', name, colors }) => {
       }}
     >
       {colors.map((c, i) => (
-        <Color key={i} color={c} name={toColorName(seperator, name, i)} />
+        <Color key={i} name={c.name} color={c.value} />
       ))}
     </Box>
-  ) : (
-    <Color color={colors} />
   )
 
   return (
@@ -64,26 +50,37 @@ const Swatch = ({ seperator = '-', name, colors }) => {
   )
 }
 
-export const ThemeColors = ({ seperator = '-', colors }) => (
-  <Box
-    css={{
-      display: 'grid',
-      alignItems: 'center',
-      gridTemplateColumns: 'auto 1fr',
-      gridGap: '1rem',
-    }}
-  >
-    {colors.map(c => (
-      <Swatch
-        key={c.name}
-        seperator={seperator}
-        name={c.name}
-        colors={c.value}
-      />
-    ))}
-  </Box>
-)
+export const ThemeColors = ({ colors }) => {
+  const grouped = groupBy(c => {
+    const id = identifier(c.name)
+
+    if (!id) {
+      return c
+    }
+
+    return id.name
+  })(colors)
+
+  return (
+    <Box
+      css={{
+        display: 'grid',
+        alignItems: 'center',
+        gridTemplateColumns: 'auto 1fr',
+        gridGap: '1rem',
+      }}
+    >
+      {Object.keys(grouped).map(k => (
+        <Swatch key={k} name={k} colors={grouped[k]} />
+      ))}
+    </Box>
+  )
+}
 
 ThemeColors.propTypes = {
   colors: PropTypes.array.isRequired,
+}
+
+ThemeColors.defaultProps = {
+  colors: [],
 }

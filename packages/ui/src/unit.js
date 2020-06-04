@@ -1,30 +1,4 @@
-import { isNumeric, isString, isNil } from '@utilz/types'
-
-const toNumeric = value => {
-  const invalid = {
-    isValid: false,
-    value: undefined,
-  }
-
-  if (isNil(value)) {
-    return invalid
-  }
-
-  if (!isNumeric(value)) {
-    return invalid
-  }
-
-  const result = Number(value)
-
-  if (isNaN(result)) {
-    return invalid
-  }
-
-  return {
-    isValid: true,
-    value: result,
-  }
-}
+import { numeric, isString, isNil } from '@utilz/types'
 
 const isValidUnit = value => {
   if (!value) {
@@ -69,7 +43,7 @@ export const unit = value => {
     )
   }
 
-  const number = toNumeric(value)
+  const number = numeric(value)
   if (number.isValid) {
     return {
       value: number.value,
@@ -85,7 +59,7 @@ export const unit = value => {
       invalid()
     }
 
-    const number = toNumeric(numParts[0])
+    const number = numeric(numParts[0])
     if (!number.isValid) {
       invalid()
     }

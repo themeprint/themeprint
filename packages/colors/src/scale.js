@@ -1,7 +1,7 @@
 import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
-import { color, isColor, stringToHsl, toChroma } from './color'
-import { toScaleName } from './scale-name'
+import { isObject } from '@utilz/types'
+import { color, stringToHsl, toChroma } from './color'
 
 const colorsFromEdges = (start, end, number = 9) => {
   return chroma
@@ -123,47 +123,68 @@ const centerIndex = array => {
 
 const defaultFormatter = color => color.css()
 
-export const configure = defaultOptions => (valueOrRange, options) => {
+// value is an object with { name, start, center, end }
+// name is mandatory
+// must have center, or start and end, or start, center, end
+// in just center we generate a scale around that center value
+// or a range with start, end and optional center values
+export const configure = defaultOptions => (value, options) => {
   const resolvedOptions = deepmerge(
     {
       number: 9,
       generator: rotateHue(80),
-      seperator: '-',
       format: defaultFormatter,
     },
     defaultOptions,
     options
   )
 
+  if (!isObject(value)) {
+    throw new Error('Value is invalid object.')
+  }
+
+  // TODO: support any odd number of elements => 1
+  if (resolvedOptions.number !== 9) {
+    throw new Error('Only 9 elements are currently supported.')
+  }
+
   // TODO: validate resolved options
-  const { number, name, seperator, format, generator } = resolvedOptions
+  const { number, format, generator } = resolvedOptions
 
-  const result = (value, scale) => {
-    if (name) {
-      return {
-        [name]: format(value),
-        [toScaleName(seperator)(name)]: scale.map(c => format(c)),
-      }
+  const result = scale => {
+    // TODO: support type 'array' or 'object'
+    // default to object, so return { xxs: .., xs: .. etc. }
+    // if type is array, return scale.map(c => format(c))
+    // Generate object names automatically based off of number value
+    const values = scale.map(c => format(c))
+    const obj = values.reduce((obj, v, i) => {
+      obj[`${name}${(i + 1) * 100}`] = v
+      return obj
+    }, {})
+
+    return {
+      [name]: values[centerIndex(values)], // middle value,
+      ...obj,
     }
-
-    return scale.map(c => format(c))
   }
 
-  const isRange = !isColor(valueOrRange)
-
-  if (isRange) {
-    const { start, center, end } = valueOrRange
-    validateRange(valueOrRange)
-
-    const palette = center
-      ? colorsFromEdgesAndCenter(start, center, end, resolvedOptions.number)
-      : colorsFromEdges(start, end, resolvedOptions.number)
-
-    return result(palette[centerIndex(palette)], palette)
+  const { name, start, center, end } = value
+  if (!name) {
+    throw new Error('Must specify scale name.')
   }
 
-  // Assume center value
-  return result(valueOrRange, colorsFromCenter(valueOrRange, number, generator))
+  if (center && !start && !end) {
+    // Assume center value
+    return result(colorsFromCenter(center, number, generator))
+  }
+
+  validateRange(value)
+
+  const palette = center
+    ? colorsFromEdgesAndCenter(start, center, end, resolvedOptions.number)
+    : colorsFromEdges(start, end, resolvedOptions.number)
+
+  return result(palette)
 }
 
 export const scale = configure()
