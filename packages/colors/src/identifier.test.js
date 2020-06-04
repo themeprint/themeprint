@@ -26,21 +26,21 @@ describe('identifier', () => {
   })
 
   it('should return expected values for string', () => {
-    expect(identifier('primary500')).toEqual({
+    expect(identifier('primary500')).toMatchObject({
       name: 'primary',
       index: 500,
     })
   })
 
   it('should return expected values for single digit', () => {
-    expect(identifier('primary5')).toEqual({
+    expect(identifier('primary5')).toMatchObject({
       name: 'primary',
       index: 5,
     })
   })
 
   it('should return expected string for no digits', () => {
-    expect(identifier('primary')).toEqual({
+    expect(identifier('primary')).toMatchObject({
       name: 'primary',
       index: undefined,
     })
@@ -52,5 +52,10 @@ describe('identifier', () => {
 
   it('should return invalid result for space prefix', () => {
     expect(identifier(' primary500')).toEqual(undefined)
+  })
+
+  it('should provide format function that outputs string identifier', () => {
+    const id = identifier('primary500')
+    expect(id.format()).toEqual('primary500')
   })
 })
