@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.9](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.8...@themeprint/ui@0.1.1-alpha.9) (2020-06-04)
+
+
+### Bug Fixes
+
+* add px to numeric border width ([#12](https://github.com/themeprint/themeprint/issues/12)) ([00fcea9](https://github.com/themeprint/themeprint/commit/00fcea95f9d860037448457d3072b89bad784ccc))
+
+
+
+
+
 ## [0.1.1-alpha.8](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.7...@themeprint/ui@0.1.1-alpha.8) (2020-06-04)
 
 
