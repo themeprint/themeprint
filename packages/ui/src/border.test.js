@@ -112,4 +112,24 @@ describe('border', () => {
       })
     ).toEqual('20px solid #ccc')
   })
+
+  it('returns expected values given unitless border width', () => {
+    expect(
+      border('lg solid #ccc')({
+        borderWidths: {
+          lg: 20,
+        },
+      })
+    ).toEqual('20px solid #ccc')
+  })
+
+  it('returns expected values given non pixel border width', () => {
+    expect(
+      border('lg solid #ccc')({
+        borderWidths: {
+          lg: '20rem',
+        },
+      })
+    ).toEqual('20rem solid #ccc')
+  })
 })
