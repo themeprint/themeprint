@@ -1,6 +1,7 @@
 // TODO: add margin, padding and other shorthand functions
 import { css } from '@theme-ui/css'
-import { isNil, isString } from '@utilz/types'
+import { isNil, isString, isNumeric } from '@utilz/types'
+import { unit } from './unit'
 
 export const border = value => theme => {
   if (isNil(value)) {
@@ -27,5 +28,9 @@ export const border = value => theme => {
   })
 
   const result = process(theme)
-  return `${result.borderWidth} ${result.borderStyle} ${result.color}`
+  const borderWidth = isNumeric(result.borderWidth)
+    ? unit(result.borderWidth).css()
+    : result.borderWidth
+
+  return `${borderWidth} ${result.borderStyle} ${result.color}`
 }
