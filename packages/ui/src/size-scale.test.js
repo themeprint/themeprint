@@ -1,4 +1,4 @@
-import { sizeScale, ratio } from './size-scale'
+import { configureSizeScale, sizeScale, ratio } from './size-scale'
 
 describe('sizeScale', () => {
   it('should throw given undefined generator', () => {
@@ -82,6 +82,34 @@ describe('sizeScale', () => {
       xxxs: '0.625em',
       xxs: '1.25em',
       xs: '2.5em',
+      s: '5em',
+      m: '10em',
+      l: '20em',
+      xl: '40em',
+      xxl: '80em',
+      xxxl: '160em',
+    })
+  })
+
+  it('should return expected scale given generator ratio s and l values and round', () => {
+    expect(configureSizeScale({ round: true })(ratio(2, 4))(10)).toEqual({
+      xxxs: 1,
+      xxs: 1,
+      xs: 3,
+      s: 5,
+      m: 10,
+      l: 40,
+      xl: 160,
+      xxl: 640,
+      xxxl: 2560,
+    })
+  })
+
+  it('should return expected scale given unit medium and round', () => {
+    expect(configureSizeScale({ round: true })(ratio(2))('10em')).toEqual({
+      xxxs: '1em',
+      xxs: '1em',
+      xs: '3em',
       s: '5em',
       m: '10em',
       l: '20em',

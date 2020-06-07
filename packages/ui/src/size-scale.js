@@ -17,7 +17,13 @@ const unfold = (fn, seed) => {
 const fromEntries = arr =>
   Object.assign({}, ...Array.from(arr, ([k, v]) => ({ [k]: v })))
 
-export const sizeScale = generator => m => {
+export const configureSizeScale = (options = {}) => generator => m => {
+  const defaultOptions = {
+    round: false,
+  }
+
+  const { round } = deepmerge(defaultOptions, options)
+
   if (isNil(generator)) {
     throw new Error(`No generator specified.`)
   }
@@ -80,7 +86,7 @@ export const sizeScale = generator => m => {
     }
   )
 
-  return fromEntries(
+  const scale = fromEntries(
     s
       .concat([
         [
@@ -95,15 +101,23 @@ export const sizeScale = generator => m => {
       ])
       .concat(l)
   )
-}
 
-export const configureRatio = (options = {}) => (small, large) => {
-  const defaultOptions = {
-    round: false,
+  if (round) {
+    return Object.keys(scale).reduce((result, k) => {
+      const u = unit(scale[k])
+      result[k] = u.unitless
+        ? Math.round(u.value)
+        : `${Math.round(u.value)}${u.unit}`
+      return result
+    }, {})
   }
 
-  const { round } = deepmerge(defaultOptions, options)
+  return scale
+}
 
+export const sizeScale = configureSizeScale()
+
+export const ratio = (small, large) => {
   if (isNil(small)) {
     throw new Error('No ratio specified.')
   }
@@ -127,5 +141,3 @@ export const configureRatio = (options = {}) => (small, large) => {
     }
   }
 }
-
-export const ratio = configureRatio()
