@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.10](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.9...@themeprint/ui@0.1.1-alpha.10) (2020-06-07)
+
+
+### Features
+
+* add size scale ([#13](https://github.com/themeprint/themeprint/issues/13)) ([4e48cff](https://github.com/themeprint/themeprint/commit/4e48cffad3dec0c0fabf5a64c5a809eccf004160))
+
+
+
+
+
 ## [0.1.1-alpha.9](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.8...@themeprint/ui@0.1.1-alpha.9) (2020-06-04)
 
 

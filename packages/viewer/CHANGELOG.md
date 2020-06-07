@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.6](https://github.com/themeprint/themeprint/compare/@themeprint/viewer@0.1.1-alpha.5...@themeprint/viewer@0.1.1-alpha.6) (2020-06-07)
+
+**Note:** Version bump only for package @themeprint/viewer
+
+
+
+
+
 ## [0.1.1-alpha.5](https://github.com/themeprint/themeprint/compare/@themeprint/viewer@0.1.1-alpha.4...@themeprint/viewer@0.1.1-alpha.5) (2020-06-04)
 
 **Note:** Version bump only for package @themeprint/viewer
