@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.11](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.10...@themeprint/ui@0.1.1-alpha.11) (2020-06-20)
+
+
+### Features
+
+* add breakpoints ([#14](https://github.com/themeprint/themeprint/issues/14)) ([3b5edda](https://github.com/themeprint/themeprint/commit/3b5edda77a0c7b8da45096614c698c2321a7eec8))
+
+
+
+
+
 ## [0.1.1-alpha.10](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.9...@themeprint/ui@0.1.1-alpha.10) (2020-06-07)
 
 
