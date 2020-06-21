@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1-alpha.12](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.11...@themeprint/ui@0.1.1-alpha.12) (2020-06-21)
+
+
+### Bug Fixes
+
+* add unit to unitless breakpoints ([#15](https://github.com/themeprint/themeprint/issues/15)) ([bbf425c](https://github.com/themeprint/themeprint/commit/bbf425ccb1eb198932fae0485593ce70c950aea0))
+
+
+
+
+
 ## [0.1.1-alpha.11](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1-alpha.10...@themeprint/ui@0.1.1-alpha.11) (2020-06-20)
 
 
