@@ -1,6 +1,16 @@
 import { isNil, isObject } from '@utilz/types'
 
-const getWarnings = theme => {
+export interface WarningMeta {
+  property: string
+}
+
+export interface Warning {
+  type: string
+  meta: WarningMeta
+  message: string
+}
+
+const getWarnings = (theme: Record<string, unknown>) => {
   const expectedProperties = [
     'borders',
     'borderStyles',
@@ -19,9 +29,9 @@ const getWarnings = theme => {
     'zIndices',
   ]
 
-  const warnings = []
+  const warnings: Warning[] = []
 
-  expectedProperties.forEach(p => {
+  expectedProperties.forEach((p) => {
     if (!theme.hasOwnProperty(p)) {
       warnings.push({
         type: 'missing-property',
@@ -34,7 +44,7 @@ const getWarnings = theme => {
   return warnings
 }
 
-export const lint = theme => {
+export const lint = (theme: Record<string, unknown>) => {
   if (isNil(theme)) {
     throw new Error('No theme specified.')
   }

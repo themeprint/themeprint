@@ -1,4 +1,4 @@
-export const configureUseVariant = themeKey => variant => {
+export const configureUseVariant = (themeKey?: string) => (variant: string) => {
   if (!variant) {
     throw new Error('No variant name provided.')
   }

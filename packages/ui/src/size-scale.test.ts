@@ -1,26 +1,6 @@
 import { configureSizeScale, sizeScale, ratio } from './size-scale'
 
 describe('sizeScale', () => {
-  it('should throw given undefined generator', () => {
-    expect(() => sizeScale()(10)).toThrow('No generator specified.')
-  })
-
-  it('should throw given null generator', () => {
-    expect(() => sizeScale(null)(10)).toThrow('No generator specified.')
-  })
-
-  it('should throw given boolean generator', () => {
-    expect(() => sizeScale(false)(10)).toThrow('Generator must be a function.')
-  })
-
-  it('should throw given string generator', () => {
-    expect(() => sizeScale('')(10)).toThrow('Generator must be a function.')
-  })
-
-  it('should throw given object generator', () => {
-    expect(() => sizeScale({})(10)).toThrow('Generator must be a function.')
-  })
-
   it('should return expected scale given generator fixed value', () => {
     expect(sizeScale(({ medium }) => medium)(10)).toEqual({
       xxxs: 10,

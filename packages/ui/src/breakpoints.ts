@@ -4,7 +4,7 @@ import { unit } from './unit'
 
 // Allow indexing or property name to be used
 // e.g. breakpoints[0] or breakpoints.phone
-export const createBreakpoints = sizes => {
+export const createBreakpoints = (sizes: Record<string, number | string>) => {
   if (isNil(sizes)) {
     throw new Error(`No breakpoints defined.`)
   }
@@ -14,13 +14,13 @@ export const createBreakpoints = sizes => {
   }
 
   const sizeKeys = Object.keys(sizes)
-  const breakpoints = sizeKeys.map(s => unit(sizes[s]).css())
+  const breakpoints: any = sizeKeys.map(s => unit(sizes[s]).css())
 
-  sizeKeys.forEach(key => {
+  sizeKeys.forEach((key: string) => {
     breakpoints[key] = unit(sizes[key]).css()
   })
 
-  const min = size => {
+  const min = (size: string) => {
     if (isNil(size)) {
       throw new Error(`No breakpoint size specified.`)
     }
@@ -32,13 +32,13 @@ export const createBreakpoints = sizes => {
     return `(min-width: ${breakpoints[size]})`
   }
 
-  const useMinMediaQuery = size => {
+  const useMinMediaQuery = (size: string) => {
     return useMedia(min(size))
   }
 
   return {
     mediaQuery: {
-      min: size => `@media ${min(size)}`,
+      min: (size: string) => `@media ${min(size)}`,
     },
     breakpoints,
     useMediaQuery: () => ({

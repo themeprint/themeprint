@@ -4,11 +4,11 @@ const defaultId = 'app'
 
 const defaultScaleSeperator = '-'
 
-const defaultFallback = ({ message, params, theme }) => {
+const defaultFallback = ({ message, params, theme }: { message: any, params: any, theme: any}) => {
   throw new Error(message)
 }
 
-const defaultSetup = type => options => (...params) => theme => {
+const defaultSetup = (type: any) => (options: any) => (...params: any) => (theme: any) => {
   const { id = defaultId, fallback = defaultFallback } = options
   const {
     resolver = defaultResolver({
@@ -22,7 +22,7 @@ const defaultSetup = type => options => (...params) => theme => {
   return resolver({ type, params })
 }
 
-export const configure = (options = {}) => {
+export const configure = (options: any = {}) => {
   const { fallback = defaultFallback } = options
   return {
     color: defaultSetup('color')({ fallback }),

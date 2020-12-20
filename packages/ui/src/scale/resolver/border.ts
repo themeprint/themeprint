@@ -3,7 +3,7 @@ import { unit } from '../../unit'
 import { css } from '@theme-ui/css'
 import { resolveColor } from './color'
 
-export const resolveBorder = ({ theme, params, options }) => {
+export const resolveBorder = ({ theme, params, options } : { theme: Record<string, unknown>, params:  string[], options: Record<string, unknown>}) => {
   if (isNil(params) || params.length === 0) {
     throw new Error('No parameters specified.')
   }
@@ -43,6 +43,11 @@ export const resolveBorder = ({ theme, params, options }) => {
   })
 
   const resolvedValues = cssFunc(theme)
+
+  if (!resolvedValues.borderWidth) {
+    throw new Error(`No `)
+  }
+
   const resolvedBorderWidth = unit(resolvedValues.borderWidth)
 
   return `${resolvedBorderWidth.css()} ${

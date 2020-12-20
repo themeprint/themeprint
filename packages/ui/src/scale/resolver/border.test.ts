@@ -1,10 +1,6 @@
 import { border } from '../configure'
 
 describe('border', () => {
-  it('should throw no theme when no theme provided', () => {
-    expect(() => border('1px solid primary')()).toThrow('No theme provided.')
-  })
-
   it('should throw when no parameter provided', () => {
     expect(() => border()({})).toThrow('No parameters specified.')
   })

@@ -1,28 +1,6 @@
 import { border } from './border'
 
 describe('border', () => {
-  it('throws given undefined', () => {
-    expect(() => border()({})).toThrow('No border value specified.')
-  })
-
-  it('throws given null', () => {
-    expect(() => border(null)({})).toThrow('No border value specified.')
-  })
-
-  it('throws given boolean', () => {
-    expect(() => border(false)({})).toThrow(
-      'Unexpected non string border value.'
-    )
-  })
-
-  it('throws given object', () => {
-    expect(() => border({})({})).toThrow('Unexpected non string border value.')
-  })
-
-  it('throws given array', () => {
-    expect(() => border([])({})).toThrow('Unexpected non string border value.')
-  })
-
   it('throws given empty string', () => {
     expect(() => border('')({})).toThrow(
       'Border value must have width, style, and color.'

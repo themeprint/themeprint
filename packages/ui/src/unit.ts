@@ -1,6 +1,6 @@
 import { numeric, isString, isNil } from '@utilz/types'
 
-const isValidUnit = value => {
+const isValidUnit = (value: string) => {
   if (!value) {
     return false
   }
@@ -30,12 +30,23 @@ const isValidUnit = value => {
   return validUnits.includes(value)
 }
 
-export const unit = value => {
+export interface Unit {
+  value: number;
+  unit: string;
+  unitless: boolean;
+  css: () => string,
+}
+
+function isStringGuard(value: number | string): value is string {
+  return isString(value)
+}
+
+export const unit = (value: number | string): Unit => {
   if (isNil(value)) {
     throw new Error('No value specified.')
   }
 
-  const invalid = () => {
+  const invalid = (): never => {
     throw new Error(
       `The value '${
         isString(value) ? value : JSON.stringify(value)
@@ -44,7 +55,7 @@ export const unit = value => {
   }
 
   const number = numeric(value)
-  if (number.isValid) {
+  if (number.isValid && number.value) {
     return {
       value: number.value,
       unit: 'px',
@@ -53,19 +64,19 @@ export const unit = value => {
     }
   }
 
-  if (isString(value)) {
+  if (isStringGuard(value)) {
     const numParts = value.split(/([\d|.]+)/).filter(Boolean)
     if (!numParts || numParts.length !== 2) {
-      invalid()
+      return invalid()
     }
 
     const number = numeric(numParts[0])
-    if (!number.isValid) {
-      invalid()
+    if (!number.isValid || !number.value) {
+      return invalid()
     }
 
     if (!isValidUnit(numParts[1])) {
-      invalid()
+      return invalid()
     }
 
     return {
@@ -76,5 +87,5 @@ export const unit = value => {
     }
   }
 
-  invalid()
+  return invalid()
 }

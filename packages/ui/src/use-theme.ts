@@ -2,7 +2,7 @@ import { deepmerge } from '@utilz/deepmerge'
 import { useThemeUI } from '@theme-ui/core'
 import { createTheme } from './theme'
 
-export const configureUseTheme = defaultTheme => fallbackTheme => {
+export const configureUseTheme = (defaultTheme: Record<string, unknown>) => (fallbackTheme: Record<string, unknown>) => {
   const context = useThemeUI()
 
   if (!context) {

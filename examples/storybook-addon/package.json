@@ -9,16 +9,12 @@
     "storybook": "yarn clean && start-storybook"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
     "@storybook/react": "^5.3.14",
-    "@themeprint/storybook-addon": "^0.1.2-alpha.1",
-    "babel-loader": "^8.0.6"
+    "@themeprint/storybook-addon": "^0.1.2-alpha.1"
   },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "theme-ui": "^0.3.1"
+    "theme-ui": "^0.3.4"
   }
 }

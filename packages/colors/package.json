@@ -24,18 +24,15 @@
     "access": "public"
   },
   "dependencies": {
-    "@utilz/deepmerge": "^0.1.13",
-    "@utilz/types": "^0.1.12",
+    "@utilz/deepmerge": "^0.1.16",
+    "@utilz/types": "^0.1.14",
     "chroma-js": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
-    "@theme-ui/core": "^0.3.1",
-    "babel-jest": "^25.1.0",
-    "faker": "^4.1.0",
-    "jest": "^25.1.0",
-    "microbundle": "^0.11.0",
-    "prettier": "^1.19.1"
+    "@theme-ui/core": "^0.3.4",
+    "faker": "^5.1.0",
+    "jest": "^26.6.3",
+    "microbundle": "^0.12.4",
+    "prettier": "^2.2.1"
   }
 }

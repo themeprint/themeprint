@@ -1,8 +1,10 @@
-import { isNil, isFunction } from '@utilz/types'
+import { isNil, isFunction, Nullable } from '@utilz/types'
 import { unit } from './unit'
 import { deepmerge } from '@utilz/deepmerge'
 
-const unfold = (fn, seed) => {
+// TODO: type
+
+const unfold = (fn: any, seed: any) => {
   let pair = fn(seed)
   const result = []
 
@@ -14,10 +16,19 @@ const unfold = (fn, seed) => {
   return result
 }
 
-const fromEntries = arr =>
+const fromEntries = (arr: any) =>
   Object.assign({}, ...Array.from(arr, ([k, v]) => ({ [k]: v })))
 
-export const configureSizeScale = (options = {}) => generator => m => {
+export interface GeneratorParams {
+  type: string
+  name: string
+  medium: number | string
+  previous: number | Nullable<string>
+}
+
+export const configureSizeScale = (options = {}) => (
+  generator: (params: GeneratorParams) => {}
+) => (m: number | string) => {
   const defaultOptions = {
     round: false,
   }
@@ -33,7 +44,7 @@ export const configureSizeScale = (options = {}) => generator => m => {
   }
 
   const s = unfold(
-    v =>
+    (v: any) =>
       v.name === 'xxxxs'
         ? false
         : [
@@ -60,7 +71,7 @@ export const configureSizeScale = (options = {}) => generator => m => {
   )
 
   const l = unfold(
-    v =>
+    (v: any) =>
       v.name === 'xxxxl'
         ? false
         : [
@@ -103,7 +114,7 @@ export const configureSizeScale = (options = {}) => generator => m => {
   )
 
   if (round) {
-    return Object.keys(scale).reduce((result, k) => {
+    return Object.keys(scale).reduce((result: Record<string, unknown>, k) => {
       const u = unit(scale[k])
       result[k] = u.unitless
         ? Math.round(u.value)
@@ -117,7 +128,7 @@ export const configureSizeScale = (options = {}) => generator => m => {
 
 export const sizeScale = configureSizeScale()
 
-export const ratio = (small, large) => {
+export const ratio = (small: number, large?: number) => {
   if (isNil(small)) {
     throw new Error('No ratio specified.')
   }
@@ -125,7 +136,15 @@ export const ratio = (small, large) => {
   const s = small
   const l = large ? large : small
 
-  return ({ type, medium, previous }) => {
+  return ({
+    type,
+    medium,
+    previous,
+  }: {
+    type: string
+    medium: number | string
+    previous: number | string
+  }) => {
     switch (type) {
       case 's':
         const sp = unit(previous)

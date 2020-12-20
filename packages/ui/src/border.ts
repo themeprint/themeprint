@@ -3,7 +3,11 @@ import { css } from '@theme-ui/css'
 import { isNil, isString, isNumeric } from '@utilz/types'
 import { unit } from './unit'
 
-export const border = value => theme => {
+function isNumericGuard(value: number | string | undefined): value is number {
+  return isNumeric(value)
+}
+
+export const border = (value: string) => (theme: Record<string, unknown>) => {
   if (isNil(value)) {
     throw new Error('No border value specified.')
   }
@@ -28,7 +32,7 @@ export const border = value => theme => {
   })
 
   const result = process(theme)
-  const borderWidth = isNumeric(result.borderWidth)
+  const borderWidth = isNumericGuard(result.borderWidth)
     ? unit(result.borderWidth).css()
     : result.borderWidth
 
