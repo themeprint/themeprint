@@ -13,6 +13,7 @@
     "@theme-ui/preset-future": "^0.3.4"
   },
   "dependencies": {
+    "@themeprint/colors": "^0.1.1-alpha.4",
     "@themeprint/ui": "^0.1.1-alpha.12",
     "theme-ui": "^0.3.4"
   }

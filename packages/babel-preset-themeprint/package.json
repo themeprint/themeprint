@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@babel/helper-plugin-utils": "^7.10.4",
-    "@themeprint/babel-plugin-themeprint": "^0.1.1-alpha.2"
+    "@themeprint/babel-plugin-themeprint": "^0.1.1-alpha.2",
+    "@themeprint/colors": "^0.1.1-alpha.4",
+    "@themeprint/ui": "^0.1.1-alpha.12"
   }
 }

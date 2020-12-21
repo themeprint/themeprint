@@ -32,8 +32,10 @@
     "@storybook/core-events": "^5.3.12",
     "@storybook/theming": "^5.3.12",
     "@themeprint/babel-preset-themeprint": "^0.1.1-alpha.2",
+    "@themeprint/colors": "^0.1.1-alpha.4",
     "@themeprint/jsx": "^0.1.1-alpha.2",
     "@themeprint/part": "^0.1.1-alpha.2",
+    "@themeprint/ui": "^0.1.1-alpha.12",
     "@utilz/types": "^0.1.14"
   },
   "devDependencies": {
