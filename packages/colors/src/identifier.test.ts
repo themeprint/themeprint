@@ -1,10 +1,6 @@
 import { identifier } from './identifier'
 
 describe('identifier', () => {
-  it('should throw given undefined', () => {
-    expect(identifier()).toEqual(undefined)
-  })
-
   it('should throw given null', () => {
     expect(identifier(null)).toEqual(undefined)
   })
