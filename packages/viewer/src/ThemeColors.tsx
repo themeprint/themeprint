@@ -3,10 +3,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Styled, Box } from 'theme-ui'
 import { toHsl } from '@themeprint/colors'
-import { groupBy } from 'ramda'
 import { identifier } from '@themeprint/colors'
+import { groupBy } from 'ramda'
 
-const Color = ({ name, color }) => {
+const Color = ({ name, color }: { name: string; color: string }) => {
   const hsl = toHsl(color).format()
   return (
     <Box>
@@ -27,7 +27,12 @@ const Color = ({ name, color }) => {
   )
 }
 
-const Swatch = ({ name, colors }) => {
+interface SwatchColor {
+  name: string
+  value: string
+}
+
+const Swatch = ({ name, colors }: { name: string; colors: SwatchColor[] }) => {
   const content = (
     <Box
       css={{
@@ -51,7 +56,7 @@ const Swatch = ({ name, colors }) => {
 }
 
 export const ThemeColors = ({ colors }) => {
-  const grouped = groupBy(c => {
+  const grouped = groupBy((c) => {
     const id = identifier(c.name)
 
     if (!id) {
@@ -70,7 +75,7 @@ export const ThemeColors = ({ colors }) => {
         gridGap: '1rem',
       }}
     >
-      {Object.keys(grouped).map(k => (
+      {Object.keys(grouped).map((k) => (
         <Swatch key={k} name={k} colors={grouped[k]} />
       ))}
     </Box>

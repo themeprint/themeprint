@@ -14,8 +14,9 @@
   "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/viewer#readme",
   "scripts": {
     "clean": "yarn cache clean",
-    "prepare": "microbundle --no-compress -o dist",
-    "watch": "microbundle watch --no-compress -o dist",
+    "prepare": "yarn build",
+    "build": "microbundle",
+    "watch": "microbundle watch",
     "storybook": "rm -rf ./node_modules/.cache && start-storybook",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watchAll",
@@ -25,7 +26,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@theme-ui/core": "^0.3.4",
+    "@theme-ui/core": "^0.3.5",
     "@themeprint/colors": "^0.1.1-alpha.4",
     "@themeprint/ui": "^0.1.1-alpha.12",
     "@utilz/types": "^0.1.14",
@@ -36,12 +37,10 @@
     "@theme-ui/core": "^0.3.1",
     "@themeprint/colors": "^0.1.1-alpha.4",
     "@themeprint/ui": "^0.1.1-alpha.12",
-    "babel-jest": "^26.6.3",
-    "babel-loader": "^8.2.2",
     "jest": "^26.6.3",
-    "microbundle": "^0.12.4",
+    "microbundle": "^0.13.0",
     "prettier": "^2.2.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^17.0.1"
   },
   "peerDependencies": {
     "react": "*"

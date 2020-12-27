@@ -3,28 +3,6 @@ import { random } from 'faker'
 
 describe('color', () => {
   describe('constructor', () => {
-    it('should throw on undefined', () => {
-      expect(() => color()).toThrow('No value specified.')
-    })
-
-    it('should throw on null', () => {
-      expect(() => color(null)).toThrow('No value specified.')
-    })
-
-    it('should throw on boolean', () => {
-      expect(() => color(true)).toThrow('Value is not a valid HSL object.')
-    })
-
-    it('should throw on string', () => {
-      expect(() => color(random.word())).toThrow(
-        'Value is not a valid HSL object.'
-      )
-    })
-
-    it('should throw on empty object', () => {
-      expect(() => color({})).toThrow('Value is not a valid HSL object.')
-    })
-
     it('should return a value for percentages', () => {
       expect(color({ h: 0, s: 50, l: 50 })).toMatchObject({
         value: {
@@ -135,12 +113,6 @@ describe('color', () => {
     it('should return rgba when specified', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
       expect(c.css('rgba')).toEqual('rgba(209,116,116,1)')
-    })
-
-    it('should throw given an unknown format', () => {
-      const format = random.word()
-      const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(() => c.css(format)).toThrow(`Unknown format '${format}'.`)
     })
   })
 

@@ -52,6 +52,6 @@ describe('identifier', () => {
 
   it('should provide format function that outputs string identifier', () => {
     const id = identifier('primary500')
-    expect(id.format()).toEqual('primary500')
+    expect(id?.format()).toEqual('primary500')
   })
 })

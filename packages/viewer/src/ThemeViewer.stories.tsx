@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { ThemeViewer } from './ThemeViewer'
 import { color, white, scale } from '@themeprint/colors'
+import { ThemeViewer } from './ThemeViewer'
 
 const theme = {
   colors: {

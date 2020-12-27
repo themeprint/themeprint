@@ -1,7 +1,13 @@
 import chroma from 'chroma-js'
 import { isObject, isNil } from '@utilz/types'
 
-const clip = (min, max) => value => {
+export interface Hsl {
+  h: number
+  s: number
+  l: number
+}
+
+const clip = (min: number, max: number) => (value: number) => {
   if (isNil(value)) {
     throw new Error('No value specified.')
   }
@@ -17,9 +23,9 @@ const clip = (min, max) => value => {
   return value
 }
 
-const round = value => Math.round(value)
+const round = (value: number) => Math.round(value)
 
-const normaliseHsl = value => {
+const normaliseHsl = (value: Hsl): Hsl => {
   const clipPercentage = clip(0, 100)
 
   const percentage = {
@@ -37,7 +43,7 @@ const normaliseHsl = value => {
   return normalised
 }
 
-export const stringToHsl = hex => {
+export const stringToHsl = (hex: string): Color => {
   const ch = chroma(hex).hsl()
   return color({
     h: isNaN(ch[0]) ? 0 : ch[0],
@@ -46,7 +52,7 @@ export const stringToHsl = hex => {
   })
 }
 
-export const toHsl = value => {
+export const toHsl = (value: string | Hsl) => {
   if (!value) {
     throw new Error('No value specified.')
   }
@@ -58,7 +64,7 @@ export const toHsl = value => {
   return stringToHsl(value)
 }
 
-export const isColor = value => {
+export const isColor = (value: any) => {
   if (!value) {
     return false
   }
@@ -78,7 +84,7 @@ export const isColor = value => {
   return false
 }
 
-export const isHsl = value => {
+export const isHsl = (value: any): value is Hsl => {
   if (!value) {
     return false
   }
@@ -98,15 +104,19 @@ export const isHsl = value => {
   return false
 }
 
-export const toChroma = value =>
-  chroma({
-    h: value.h,
-    s: value.s / 100,
-    l: value.l / 100,
-  })
+export const toChroma = (value: Hsl) =>
+  chroma.hsl(value.h, value.s / 100, value.l / 100)
+
+export interface Color {
+  value: Hsl
+  css: (format?: CssFormat) => string
+  format: () => Hsl
+}
+
+export type CssFormat = 'hsl' | 'hex' | 'hexa' | 'rgb' | 'rgba'
 
 // Only support HSL
-export const color = obj => {
+export const color = (obj: Hsl): Color => {
   if (!obj) {
     throw new Error('No value specified.')
   }
@@ -120,7 +130,7 @@ export const color = obj => {
 
   return {
     value,
-    css: (format = 'hsl') => {
+    css: (format: CssFormat = 'hsl') => {
       switch (format) {
         case 'hsl':
           return chromaValue.css('hsl')
@@ -129,9 +139,11 @@ export const color = obj => {
         case 'hexa':
           return chromaValue.hex('rgba')
         case 'rgb':
-          return chromaValue.css('rgb')
+          const [r, g, b] = chromaValue.rgb()
+          return `rgb(${r},${g},${b})`
         case 'rgba':
-          return chromaValue.css('rgba')
+          const [ra, ga, ba, aa] = chromaValue.rgba()
+          return `rgba(${ra},${ga},${ba},${aa})`
         default: {
           throw new Error(`Unknown format '${format}'.`)
         }
