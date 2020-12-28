@@ -4,22 +4,31 @@ import PropTypes from 'prop-types'
 import { jsx } from '@theme-ui/core'
 import { ThemeColors } from './ThemeColors'
 
-const toColors = colors => {
+const toColors = (colors: Record<string, string>) => {
   if (!colors) {
     return []
   }
 
-  return Object.keys(colors).map(key => color(key, colors[key]))
+  return Object.keys(colors).map((key) => color(key, colors[key]))
 }
 
-const color = (name, value) => {
+export interface Color {
+  name: string
+  value: string
+}
+
+const color = (name: string, value: string): Color => {
   return {
     name,
     value,
   }
 }
 
-export const ThemeViewer = ({ theme, options = {} }) => {
+export interface Theme {
+  colors: Record<string, string>
+}
+
+export const ThemeViewer = ({ theme }: { theme: Theme }) => {
   const colors = toColors(theme.colors)
 
   return (

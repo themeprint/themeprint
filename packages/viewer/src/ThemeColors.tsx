@@ -5,6 +5,7 @@ import { jsx, Styled, Box } from 'theme-ui'
 import { toHsl } from '@themeprint/colors'
 import { identifier } from '@themeprint/colors'
 import { groupBy } from 'ramda'
+import { Color } from './ThemeViewer'
 
 const Color = ({ name, color }: { name: string; color: string }) => {
   const hsl = toHsl(color).format()
@@ -55,12 +56,12 @@ const Swatch = ({ name, colors }: { name: string; colors: SwatchColor[] }) => {
   )
 }
 
-export const ThemeColors = ({ colors }) => {
-  const grouped = groupBy((c) => {
+export const ThemeColors = ({ colors }: { colors: Color[] }) => {
+  const grouped = groupBy((c: Color) => {
     const id = identifier(c.name)
 
     if (!id) {
-      return c
+      return c.name
     }
 
     return id.name
