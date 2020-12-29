@@ -1,13 +1,18 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Box } from 'theme-ui'
 import { ThemeViewer } from '@themeprint/viewer'
 import { theme } from './theme'
 
 export function App() {
   return (
-    <div>
-      <p>app</p>
+    <Box
+      sx={{
+        width: '900px',
+        margin: '0 auto',
+        marginTop: '20px',
+      }}
+    >
       <ThemeViewer theme={theme} />
-    </div>
+    </Box>
   )
 }

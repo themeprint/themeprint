@@ -1,7 +1,10 @@
 import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
 import { isObject } from '@utilz/types'
-import { Color, color, Hsl, stringToHsl, toChroma } from './color'
+import { Color, color, Hsl, toColor } from './color'
+
+const toChroma = (value: Hsl) =>
+  chroma.hsl(value.h, value.s / 100, value.l / 100)
 
 const colorsFromEdges = (
   start: Color,
@@ -11,7 +14,7 @@ const colorsFromEdges = (
   return chroma
     .scale([toChroma(start.value), toChroma(end.value)])
     .colors(number)
-    .map((hex: string) => stringToHsl(hex))
+    .map((hex: string) => toColor(hex))
 }
 
 const colorsFromEdgesAndCenter = (
@@ -155,10 +158,40 @@ export interface ColorScale {
   end?: Color
 }
 
+// Converts a collection of colors to a named scale, e.g. primary100...primary900
+// Uses the name as an alias to the center scale value
+// TODO: assumes center value
+export const toNamedScale = ({
+  name,
+  scale,
+  format,
+}: {
+  name: string
+  scale: Color[]
+  format: (color: Color) => string
+}) => {
+  // TODO: support type 'array' or 'object'
+  // default to object, so return { xxs: .., xs: .. etc. }
+  // if type is array, return scale.map(c => format(c))
+  // Generate object names automatically based off of number value
+  const values = scale.map((c) => format(c))
+
+  const seed: Record<string, unknown> = {}
+  const obj = values.reduce((obj, v, i) => {
+    obj[`${name}${(i + 1) * 100}`] = v
+    return obj
+  }, seed)
+
+  return {
+    [name]: values[centerIndex(values)], // middle value,
+    ...obj,
+  }
+}
+
 // value is an object with { name, start, center, end }
 // name is mandatory
 // must have center, or start and end, or start, center, end
-// in just center we generate a scale around that center value
+// if just center we generate a scale around that center value
 // or a range with start, end and optional center values
 export const configure = (defaultOptions?: Partial<ScaleOptions>) => (
   value: ColorScale,
@@ -185,34 +218,18 @@ export const configure = (defaultOptions?: Partial<ScaleOptions>) => (
 
   // TODO: validate resolved options
   const { number, format, generator } = resolvedOptions
-
-  const result = (scale: Color[]) => {
-    // TODO: support type 'array' or 'object'
-    // default to object, so return { xxs: .., xs: .. etc. }
-    // if type is array, return scale.map(c => format(c))
-    // Generate object names automatically based off of number value
-    const values = scale.map((c) => format(c))
-
-    const seed: Record<string, unknown> = {}
-    const obj = values.reduce((obj, v, i) => {
-      obj[`${name}${(i + 1) * 100}`] = v
-      return obj
-    }, seed)
-
-    return {
-      [name]: values[centerIndex(values)], // middle value,
-      ...obj,
-    }
-  }
-
   const { name, start, center, end } = value
+
   if (!name) {
     throw new Error('Must specify scale name.')
   }
 
   if (center && !start && !end) {
-    // Assume center value
-    return result(colorsFromCenter(center, number, generator))
+    return toNamedScale({
+      name,
+      scale: colorsFromCenter(center, number, generator),
+      format,
+    })
   }
 
   validateRange(value)
@@ -222,7 +239,11 @@ export const configure = (defaultOptions?: Partial<ScaleOptions>) => (
     ? colorsFromEdgesAndCenter(start!, center!, end!, resolvedOptions.number)
     : colorsFromEdges(start!, end!, resolvedOptions.number)
 
-  return result(palette)
+  return toNamedScale({
+    name,
+    scale: palette,
+    format,
+  })
 }
 
 export const scale = configure()

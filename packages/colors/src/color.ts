@@ -43,8 +43,8 @@ const normaliseHsl = (value: Hsl): Hsl => {
   return normalised
 }
 
-export const stringToHsl = (hex: string): Color => {
-  const ch = chroma(hex).hsl()
+const stringToColor = (value: string): Color => {
+  const ch = chroma(value).hsl()
 
   return color({
     h: isNaN(ch[0]) ? 0 : ch[0],
@@ -53,7 +53,7 @@ export const stringToHsl = (hex: string): Color => {
   })
 }
 
-export const toHsl = (value: string | Hsl): Color => {
+export const toColor = (value: string | Hsl): Color => {
   if (!value) {
     throw new Error('No value specified.')
   }
@@ -62,7 +62,7 @@ export const toHsl = (value: string | Hsl): Color => {
     return color(normaliseHsl(value))
   }
 
-  return stringToHsl(value)
+  return stringToColor(value)
 }
 
 export const isColor = (value: any) => {
@@ -105,9 +105,6 @@ export const isHsl = (value: any): value is Hsl => {
   return false
 }
 
-export const toChroma = (value: Hsl) =>
-  chroma.hsl(value.h, value.s / 100, value.l / 100)
-
 export interface Color {
   value: Hsl
   css: (format?: CssFormat) => string
@@ -127,7 +124,7 @@ export const color = (obj: Hsl): Color => {
   }
 
   const value = normaliseHsl(obj)
-  const chromaValue = toChroma(value)
+  const chromaValue = chroma.hsl(value.h, value.s / 100, value.l / 100)
 
   return {
     value,
