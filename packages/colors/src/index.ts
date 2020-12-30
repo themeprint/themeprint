@@ -1,5 +1,5 @@
 export * from './color'
-export * from './colors'
-export * from './palettes'
+export * from './swatch'
+export * from './swatches'
 export * from './scale'
 export * from './identifier'

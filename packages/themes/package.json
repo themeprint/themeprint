@@ -1,18 +1,19 @@
 {
-  "name": "@themeprint/colors",
-  "version": "0.1.1-alpha.4",
-  "description": "themeprint colors.",
+  "name": "@themeprint/themes",
+  "version": "0.1.0",
+  "description": "themeprint themes.",
+  "private": true,
   "source": "src/index.ts",
-  "main": "dist/colors.js",
-  "module": "dist/colors.esm.js",
+  "main": "dist/themes.js",
+  "module": "dist/themes.esm.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/themeprint/themeprint.git",
-    "directory": "packages/colors"
+    "directory": "packages/themes"
   },
-  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/colors#readme",
+  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/themes#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "yarn build",
@@ -25,27 +26,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "jest-extended"
-    ]
-  },
   "dependencies": {
-    "@utilz/deepmerge": "^0.1.16",
-    "@utilz/types": "^0.1.14",
-    "chroma-js": "^2.1.0"
+    "@themeprint/colors": "^0.1.1-alpha.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
-    "@theme-ui/core": "^0.3.5",
-    "@types/chroma-js": "^2.1.3",
-    "@types/faker": "^5.1.5",
-    "faker": "^5.1.0",
     "jest": "^26.6.3",
-    "jest-extended": "^0.11.5",
     "microbundle": "^0.13.0",
-    "prettier": "^2.2.1",
-    "ramda": "^0.27.1"
+    "prettier": "^2.2.1"
   }
 }

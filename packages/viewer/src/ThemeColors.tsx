@@ -2,13 +2,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { jsx, Styled, Box } from 'theme-ui'
-import { toHsl } from '@themeprint/colors'
+import { toColor } from '@themeprint/colors'
 import { identifier } from '@themeprint/colors'
 import { groupBy } from 'ramda'
 import { Color } from './ThemeViewer'
 
 const Color = ({ name, color }: { name: string; color: string }) => {
-  const hsl = toHsl(color).format()
+  const hsl = toColor(color).format()
   return (
     <Box>
       <Box

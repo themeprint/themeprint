@@ -11,7 +11,7 @@
 //   },
 // }
 
-import { color, white, scale } from '@themeprint/colors'
+import { color, colors, white, scale, ColorsVariant } from '@themeprint/colors'
 
 export const theme = {
   colors: {
@@ -22,5 +22,6 @@ export const theme = {
       center: color({ h: 214, s: 12, l: 31.5 }),
       end: color({ h: 218, s: 19, l: 17 }),
     }),
+    ...colors({ name: 'cyan', variant: ColorsVariant.cyan1 }),
   },
 }

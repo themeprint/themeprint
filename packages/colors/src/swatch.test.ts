@@ -1,9 +1,9 @@
-import { colors } from './colors'
-import { ColorsVariant } from './palettes'
+import { swatch } from './swatch'
+import { SwatchColor } from './swatches'
 
-describe('colors', () => {
+describe('swatch', () => {
   it('should return named keys', () => {
-    const result = colors({ name: 'foo', variant: ColorsVariant.cyan1 })
+    const result = swatch({ name: 'foo', color: SwatchColor.blue })
     expect(Object.keys(result)).toEqual([
       'foo',
       'foo100',
