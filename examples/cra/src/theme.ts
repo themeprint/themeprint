@@ -11,17 +11,11 @@
 //   },
 // }
 
-import { color, colors, white, scale, ColorsVariant } from '@themeprint/colors'
+import { palette, white } from '@themeprint/colors'
 
 export const theme = {
   colors: {
+    ...palette({ id: 1 }),
     background: white().css(),
-    ...scale({
-      name: 'primary',
-      start: color({ h: 211.3, s: 11.4, l: 60.59 }),
-      center: color({ h: 214, s: 12, l: 31.5 }),
-      end: color({ h: 218, s: 19, l: 17 }),
-    }),
-    ...colors({ name: 'cyan', variant: ColorsVariant.cyan1 }),
   },
 }

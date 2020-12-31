@@ -19,8 +19,7 @@ export interface SwatchDetails {
 }
 
 export interface SwatchVariant {
-  id: number
-  name: string
+  id: string
   colors: string[]
 }
 
@@ -31,8 +30,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Red',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#FFEEEE',
             '#FACDCD',
@@ -46,8 +44,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#FFE3E3',
             '#FFBDBD',
@@ -69,8 +66,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Orange',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#FFEFE6',
             '#FFD3BA',
@@ -84,8 +80,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#FFE8D9',
             '#FFD0B5',
@@ -107,8 +102,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Yellow',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#FFFAEB',
             '#FCEFC7',
@@ -122,8 +116,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#FFFBEA',
             '#FFF3C4',
@@ -145,8 +138,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Green',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#E3F9E5',
             '#C1EAC5',
@@ -160,8 +152,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#E3F9E5',
             '#C1F2C7',
@@ -175,8 +166,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 3,
-          name: 'lime',
+          id: 'lime',
           colors: [
             '#F2FDE0',
             '#E2F7C2',
@@ -190,8 +180,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 4,
-          name: 'lime vivid',
+          id: 'lime-vivid',
           colors: [
             '#F8FFED',
             '#E6FFBF',
@@ -213,8 +202,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Teal',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#EFFCF6',
             '#C6F7E2',
@@ -228,8 +216,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#F0FCF9',
             '#C6F7E9',
@@ -251,8 +238,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Cyan',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#E0FCFF',
             '#BEF8FD',
@@ -266,8 +252,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#E1FCF8',
             '#C1FEF6',
@@ -289,8 +274,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Blue',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#DCEEFB',
             '#B6E0FE',
@@ -304,8 +288,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#E6F6FF',
             '#BAE3FF',
@@ -319,8 +302,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 3,
-          name: 'light',
+          id: 'light',
           colors: [
             '#EBF8FF',
             '#D1EEFC',
@@ -334,8 +316,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 4,
-          name: 'light vivid',
+          id: 'light-vivid',
           colors: [
             '#E3F8FF',
             '#B3ECFF',
@@ -357,8 +338,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Indigo',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#E0E8F9',
             '#BED0F7',
@@ -372,8 +352,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#D9E8FF',
             '#B0D0FF',
@@ -395,8 +374,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Purple',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#EAE2F8',
             '#CFBCF2',
@@ -410,8 +388,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#F2EBFE',
             '#DAC4FF',
@@ -433,8 +410,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Magenta',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#F5E1F7',
             '#ECBDF2',
@@ -448,8 +424,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#FDEBFF',
             '#F8C4FE',
@@ -471,8 +446,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Pink',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#FFE0F0',
             '#FAB8D9',
@@ -486,8 +460,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'vivid',
+          id: 'vivid',
           colors: [
             '#FFE3EC',
             '#FFB8D2',
@@ -509,8 +482,7 @@ export const swatches = new Map<string, SwatchDetails>([
       name: 'Gray',
       variants: [
         {
-          id: 1,
-          name: 'standard',
+          id: 'standard',
           colors: [
             '#F7F7F7',
             '#E1E1E1',
@@ -524,8 +496,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 2,
-          name: 'blue',
+          id: 'blue',
           colors: [
             '#F0F4F8',
             '#D9E2EC',
@@ -539,8 +510,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 3,
-          name: 'cool',
+          id: 'cool',
           colors: [
             '#F5F7FA',
             '#E4E7EB',
@@ -554,8 +524,7 @@ export const swatches = new Map<string, SwatchDetails>([
           ],
         },
         {
-          id: 4,
-          name: 'warm',
+          id: 'warm',
           colors: [
             '#FAF9F7',
             '#E8E6E1',

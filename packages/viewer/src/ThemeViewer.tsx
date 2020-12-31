@@ -25,11 +25,11 @@ const color = (name: string, value: string): Color => {
 }
 
 export interface Theme {
-  colors: Record<string, string>
+  colors: Record<string, unknown>
 }
 
 export const ThemeViewer = ({ theme }: { theme: Theme }) => {
-  const colors = toColors(theme.colors)
+  const colors = toColors(theme.colors as Record<string, string>) // TODO: review
 
   return (
     <React.Fragment>

@@ -5,7 +5,7 @@ import { SwatchColor, swatches } from './swatches'
 export interface ColorsOptions {
   name: string
   color: SwatchColor
-  variant?: number
+  variant?: string
   format?: (color: Color) => string
 }
 
@@ -14,7 +14,7 @@ const defaultFormatter = (color: Color) => color.css()
 export const swatch = ({
   name,
   color,
-  variant = 1,
+  variant = 'standard',
   format = defaultFormatter,
 }: ColorsOptions) => {
   const swatch = swatches.get(color)
