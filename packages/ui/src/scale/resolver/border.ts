@@ -3,7 +3,15 @@ import { unit } from '../../unit'
 import { css } from '@theme-ui/css'
 import { resolveColor } from './color'
 
-export const resolveBorder = ({ theme, params, options } : { theme: Record<string, unknown>, params:  string[], options: Record<string, unknown>}) => {
+export const resolveBorder = ({
+  theme,
+  params,
+  options,
+}: {
+  theme: Record<string, unknown>
+  params: string[]
+  options: Record<string, unknown>
+}) => {
   if (isNil(params) || params.length === 0) {
     throw new Error('No parameters specified.')
   }
@@ -16,7 +24,7 @@ export const resolveBorder = ({ theme, params, options } : { theme: Record<strin
     throw new Error('Expected single string parameter.')
   }
 
-  const parts = params[0].split(' ').map(v => v.trim())
+  const parts = params[0].split(' ').map((v) => v.trim())
   if (isNil(parts) || (parts.length !== 3 && parts.length !== 4)) {
     throw new Error('Expected three or four part string parameter.')
   }
@@ -45,7 +53,7 @@ export const resolveBorder = ({ theme, params, options } : { theme: Record<strin
   const resolvedValues = cssFunc(theme)
 
   if (!resolvedValues.borderWidth) {
-    throw new Error(`No `)
+    throw new Error(`No borderWidth specified.`)
   }
 
   const resolvedBorderWidth = unit(resolvedValues.borderWidth)
