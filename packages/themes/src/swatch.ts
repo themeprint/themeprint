@@ -1,5 +1,4 @@
-import { Color, toColor } from './color'
-import { toNamedScale } from './scale'
+import { Color, toColor, toNamedScale } from '@themeprint/colors'
 import { SwatchColor, swatches } from './swatches'
 
 export interface ColorsOptions {

@@ -2,7 +2,6 @@
   "name": "@themeprint/themes",
   "version": "0.1.1",
   "description": "themeprint themes.",
-  "private": true,
   "source": "src/index.ts",
   "main": "dist/themes.js",
   "module": "dist/themes.esm.js",
