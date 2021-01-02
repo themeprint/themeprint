@@ -1,0 +1,39 @@
+import { resolver as defaultResolver } from './resolver'
+
+const defaultId = 'app'
+
+const defaultScaleSeperator = '-'
+
+const defaultFallback = ({ message, params, theme }: { message: any, params: any, theme: any}) => {
+  throw new Error(message)
+}
+
+const defaultSetup = (type: any) => (options: any) => (...params: any) => (theme: any) => {
+  const { id = defaultId, fallback = defaultFallback } = options
+  const {
+    resolver = defaultResolver({
+      scaleSeparator: defaultScaleSeperator,
+    })({
+      id,
+      fallback,
+      theme,
+    }),
+  } = options
+  return resolver({ type, params })
+}
+
+export const configure = (options: any = {}) => {
+  const { fallback = defaultFallback } = options
+  return {
+    color: defaultSetup('color')({ fallback }),
+    space: defaultSetup('space')({ fallback }),
+    font: defaultSetup('font')({ fallback }),
+    border: defaultSetup('border')({ fallback }),
+  }
+}
+
+const defaultConfiguration = configure()
+export const color = defaultConfiguration.color
+export const space = defaultConfiguration.space
+export const font = defaultConfiguration.font
+export const border = defaultConfiguration.border

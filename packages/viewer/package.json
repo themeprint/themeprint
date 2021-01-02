@@ -2,9 +2,12 @@
   "name": "@themeprint/viewer",
   "version": "0.1.1-alpha.8",
   "description": "themeprint part.",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "main": "dist/viewer.js",
-  "module": "dist/viewer.esm.js",
+  "exports": "./dist/viewer.modern.js",
+  "module": "dist/viewer.module.js",
+  "unpkg": "dist/viewer.umd.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,8 +17,9 @@
   "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/viewer#readme",
   "scripts": {
     "clean": "yarn cache clean",
-    "prepare": "microbundle --no-compress -o dist",
-    "watch": "microbundle watch --no-compress -o dist",
+    "prepare": "yarn build",
+    "build": "microbundle",
+    "watch": "microbundle watch",
     "storybook": "rm -rf ./node_modules/.cache && start-storybook",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watchAll",
@@ -25,24 +29,17 @@
     "access": "public"
   },
   "dependencies": {
-    "@theme-ui/core": "^0.3.1",
-    "@utilz/types": "^0.1.11",
-    "ramda": "^0.27.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/preset-react": "^7.7.4",
-    "@storybook/react": "^5.3.17",
-    "@theme-ui/core": "^0.3.1",
+    "@theme-ui/core": "^0.3.5",
     "@themeprint/colors": "^0.1.1-alpha.4",
     "@themeprint/ui": "^0.1.1-alpha.12",
-    "babel-jest": "^25.1.0",
-    "babel-loader": "^8.0.6",
-    "jest": "^25.1.0",
-    "microbundle": "^0.11.0",
-    "prettier": "^1.19.1",
-    "react-test-renderer": "^16.13.1"
+    "@utilz/types": "^0.1.14",
+    "ramda": "^0.27.1"
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.27.34",
+    "jest": "^26.6.3",
+    "microbundle": "^0.13.0",
+    "prettier": "^2.2.1"
   },
   "peerDependencies": {
     "react": "*"
