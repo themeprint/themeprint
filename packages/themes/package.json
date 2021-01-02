@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/themes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "themeprint themes.",
   "source": "src/index.ts",
   "main": "dist/themes.js",
@@ -26,7 +26,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@themeprint/colors": "^0.1.1"
+    "@themeprint/colors": "^0.1.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
