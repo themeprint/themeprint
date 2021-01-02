@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/lint",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0",
   "description": "themeprint Theme UI lint.",
   "source": "src/index.ts",
   "main": "dist/lint.js",

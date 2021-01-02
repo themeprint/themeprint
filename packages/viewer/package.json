@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/viewer",
-  "version": "0.1.1-alpha.8",
+  "version": "0.1.1",
   "description": "themeprint part.",
   "source": "src/index.ts",
   "main": "dist/viewer.js",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@theme-ui/core": "^0.3.5",
-    "@themeprint/colors": "^0.1.1-alpha.4",
-    "@themeprint/ui": "^0.1.1-alpha.12",
+    "@themeprint/colors": "^0.1.1",
+    "@themeprint/ui": "^0.1.1",
     "@utilz/types": "^0.1.14",
     "ramda": "^0.27.1"
   },
