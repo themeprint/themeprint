@@ -1,6 +1,6 @@
-import { swatches, SwatchColor } from './swatches'
 import { chain } from 'ramda'
 import 'jest-extended'
+import { swatches, SwatchColor } from './swatches'
 
 describe('swatches', () => {
   it('should contain nine colors per variant', () => {
