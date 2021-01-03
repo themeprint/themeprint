@@ -26,14 +26,21 @@ export interface GeneratorParams {
   previous: number | Nullable<string>
 }
 
-export const configureSizeScale = (options = {}) => (
+export interface ConfigureSizeScaleOptions {
+  round?: boolean
+}
+
+export const configureSizeScale = (options: ConfigureSizeScaleOptions = {}) => (
   generator: (params: GeneratorParams) => {}
 ) => (m: number | string) => {
-  const defaultOptions = {
+  const defaultOptions: ConfigureSizeScaleOptions = {
     round: false,
   }
 
-  const { round } = deepmerge(defaultOptions, options)
+  const { round } = deepmerge<ConfigureSizeScaleOptions>(
+    defaultOptions,
+    options
+  )
 
   if (isNil(generator)) {
     throw new Error(`No generator specified.`)
@@ -136,21 +143,25 @@ export const ratio = (small: number, large?: number) => {
   const s = small
   const l = large ? large : small
 
-  return ({
-    type,
-    medium,
-    previous,
-  }: {
-    type: string
-    medium: number | string
-    previous: number | string
-  }) => {
+  return ({ type, medium, previous }: GeneratorParams): number | string => {
     switch (type) {
       case 's':
+        if (!previous) {
+          throw new Error(
+            'Unexpected missing previous value calculating smaller unit.'
+          )
+        }
+
         const sp = unit(previous)
         const su = unit(`${sp.value * (1 / s)}${sp.unit}`)
         return sp.unitless ? su.value : su.css()
       case 'l':
+        if (!previous) {
+          throw new Error(
+            'Unexpected missing previous value calculating larger unit.'
+          )
+        }
+
         const lp = unit(previous)
         const lu = unit(`${lp.value * l}${lp.unit}`)
         return lp.unitless ? lu.value : lu.css()
