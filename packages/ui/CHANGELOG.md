@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.2...@themeprint/ui@0.1.3) (2021-01-03)
+
+
+### Bug Fixes
+
+* add types to size scale ([#20](https://github.com/themeprint/themeprint/issues/20)) ([e9a6fff](https://github.com/themeprint/themeprint/commit/e9a6ffff2a12cd254b237f308e69bcdd11fdba08))
+
+
+
+
+
 ## [0.1.2](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.1...@themeprint/ui@0.1.2) (2021-01-02)
 
 **Note:** Version bump only for package @themeprint/ui
