@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/themeprint/themeprint/compare/cra@0.1.3...cra@0.1.4) (2021-01-19)
+
+**Note:** Version bump only for package cra
+
+
+
+
+
 ## [0.1.3](https://github.com/themeprint/themeprint/compare/cra@0.1.2...cra@0.1.3) (2021-01-03)
 
 **Note:** Version bump only for package cra
