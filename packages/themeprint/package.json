@@ -1,18 +1,18 @@
 {
-  "name": "@themeprint/themes",
-  "version": "0.1.2",
-  "description": "themeprint themes.",
+  "name": "themeprint",
+  "version": "0.1.0",
+  "description": "Blueprints for Theme UI themes.",
   "source": "src/index.ts",
-  "main": "dist/themes.js",
-  "module": "dist/themes.esm.js",
+  "main": "dist/themeprint.js",
+  "module": "dist/themeprint.esm.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/themeprint/themeprint.git",
-    "directory": "packages/themes"
+    "directory": "packages/themeprint"
   },
-  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/themes#readme",
+  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/themeprint#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "yarn build",
@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@themeprint/colors": "^0.1.2",
-    "@types/theme-ui": "^0.3.7",
-    "@utilz/deepmerge": "^0.1.16"
+    "@themeprint/themes": "^0.1.2",
+    "@themeprint/ui": "^0.1.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
