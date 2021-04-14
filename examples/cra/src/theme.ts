@@ -1,4 +1,4 @@
-import { palette, white } from 'themeprint'
+import { createTheme as baseCreateTheme, white } from 'themeprint'
 
 export const theme = {
   fonts: {
@@ -11,8 +11,12 @@ export const theme = {
   },
 }
 
-export const createTheme = (paletteId: number) => {
-  return {
-    colors: palette({ id: paletteId }),
-  }
+export const createTheme = () => {
+  return baseCreateTheme()
 }
+
+// export const createTheme = (paletteId: number) => {
+//   return {
+//     colors: palette({ id: paletteId }),
+//   }
+// }

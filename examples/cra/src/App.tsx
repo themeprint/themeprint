@@ -7,7 +7,7 @@ import { createTheme } from './theme'
 
 export function App() {
   const [id, setId] = useState(1)
-  const theme = createTheme(id)
+  const theme = createTheme()
 
   return (
     <Box
@@ -24,7 +24,10 @@ export function App() {
           </option>
         ))}
       </Select>
-      <ThemeViewer theme={theme} />
+      {/* TODO: ThemeViewer should take a Theme type */}
+      <ThemeViewer
+        theme={{ ...theme, colors: theme.colors as Record<string, unknown> }}
+      />
     </Box>
   )
 }

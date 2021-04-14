@@ -26,7 +26,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@themeprint/colors": "^0.1.2"
+    "@themeprint/colors": "^0.1.2",
+    "@types/theme-ui": "^0.3.7",
+    "@utilz/deepmerge": "^0.1.16"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
