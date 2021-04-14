@@ -14,9 +14,3 @@ export const theme = {
 export const createTheme = () => {
   return baseCreateTheme()
 }
-
-// export const createTheme = (paletteId: number) => {
-//   return {
-//     colors: palette({ id: paletteId }),
-//   }
-// }
