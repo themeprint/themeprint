@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Box, Select } from 'theme-ui'
-import { ThemeViewer } from '@themeprint/viewer'
+import { ThemeViewer } from '@themeprint/viewer' // TODO: move to @themeview packages
 import { useState } from 'react'
-import { getPalettes } from '@themeprint/colors'
+import { getPalettes } from 'themeprint'
 import { createTheme } from './theme'
 
 export function App() {

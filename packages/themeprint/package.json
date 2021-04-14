@@ -1,0 +1,41 @@
+{
+  "name": "themeprint",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Blueprints for Theme UI themes.",
+  "source": "src/index.ts",
+  "main": "dist/themeprint.js",
+  "module": "dist/themeprint.esm.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themeprint/themeprint.git",
+    "directory": "packages/themeprint"
+  },
+  "homepage": "https://github.com/themeprint/themeprint/tree/master/packages/themeprint#readme",
+  "scripts": {
+    "clean": "yarn cache clean",
+    "prepare": "yarn build",
+    "build": "microbundle",
+    "watch": "microbundle watch",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@themeprint/colors": "^0.1.2",
+    "@themeprint/themes": "^0.1.2",
+    "@themeprint/ui": "^0.1.4"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "jest": "^26.6.3",
+    "microbundle": "^0.13.0",
+    "prettier": "^2.2.1"
+  }
+}

@@ -1,4 +1,4 @@
-import { palette, white } from '@themeprint/colors'
+import { palette, white } from 'themeprint'
 
 export const theme = {
   fonts: {
