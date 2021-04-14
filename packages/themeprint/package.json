@@ -1,6 +1,5 @@
 {
   "name": "themeprint",
-  "private": true,
   "version": "0.1.0",
   "description": "Blueprints for Theme UI themes.",
   "source": "src/index.ts",
