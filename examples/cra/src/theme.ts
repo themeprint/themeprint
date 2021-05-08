@@ -11,6 +11,6 @@ export const theme = {
   },
 }
 
-export const createTheme = () => {
-  return baseCreateTheme()
+export const createTheme = ({ palette }: { palette: string }) => {
+  return baseCreateTheme({ palette })
 }

@@ -1,13 +1,13 @@
-/** @jsx jsx */
-import { jsx, Box, Select } from 'theme-ui'
+import React from 'react'
+import { Box, Select } from 'theme-ui'
 import { ThemeViewer } from '@themeprint/viewer' // TODO: move to @themeview packages
 import { useState } from 'react'
 import { getPalettes } from 'themeprint'
 import { createTheme } from './theme'
 
 export function App() {
-  const [id, setId] = useState(1)
-  const theme = createTheme()
+  const [id, setId] = useState('1')
+  const theme = createTheme({ palette: id })
 
   return (
     <Box
@@ -17,7 +17,7 @@ export function App() {
         marginTop: '20px',
       }}
     >
-      <Select value={id} onChange={(e) => setId(Number(e.target.value))}>
+      <Select value={id} onChange={(e) => setId(e.target.value)}>
         {getPalettes().map((p) => (
           <option key={p.id} value={p.id}>
             {p.name}
