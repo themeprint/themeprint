@@ -1,22 +1,25 @@
 import { palettes } from './palettes'
-
+import type { ColorMode } from 'theme-ui'
 export interface PaletteOptions {
-  id: number
+  id: string
 }
 
-export interface Palette {
-  id: number
+export interface PaletteInfo {
+  id: string
   name: string
 }
+export interface Palette extends PaletteInfo {
+  colors: ColorMode
+}
 
-export const getPalettes = (): Palette[] => {
+export const getPalettes = (): PaletteInfo[] => {
   return palettes.map((p) => ({
     id: p.id,
     name: `Palette ${p.id}`,
   }))
 }
 
-export const palette = ({ id }: PaletteOptions) => {
+export const palette = ({ id }: PaletteOptions): ColorMode => {
   const pal = palettes.find((p) => p.id === id)
 
   if (!pal) {

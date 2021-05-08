@@ -1,9 +1,20 @@
+import { Palette } from './palette'
 import { swatch } from './swatch'
 import { SwatchColor } from './swatches'
 
-export const palettes = [
+// TODO: colors should contain this base set of color properties
+// background: white().css(),
+// text: color({ h: 210, s: 22, l: 49 }).css(),
+// primary?: CSS.Property.Color | undefined;
+// secondary?: CSS.Property.Color | undefined;
+// accent?: CSS.Property.Color | undefined;
+// highlight?: CSS.Property.Color | undefined;
+// muted?: CSS.Property.Color | undefined;
+
+export const palettes: Palette[] = [
   {
-    id: 1,
+    id: '1',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.cyan }),
       ...swatch({ name: 'secondary', color: SwatchColor.indigo }),
@@ -15,7 +26,8 @@ export const palettes = [
     },
   },
   {
-    id: 2,
+    id: '2',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.blue }),
       ...swatch({ name: 'secondary', color: SwatchColor.cyan }),
@@ -35,7 +47,8 @@ export const palettes = [
     },
   },
   {
-    id: 3,
+    id: '3',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.purple }),
       ...swatch({ name: 'secondary', color: SwatchColor.cyan }),
@@ -55,7 +68,8 @@ export const palettes = [
     },
   },
   {
-    id: 4,
+    id: '4',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.teal }),
       ...swatch({ name: 'secondary', color: SwatchColor.blue }),
@@ -73,7 +87,8 @@ export const palettes = [
     },
   },
   {
-    id: 5,
+    id: '5',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.gray, variant: 'blue' }),
       ...swatch({
@@ -96,7 +111,8 @@ export const palettes = [
     },
   },
   {
-    id: 6,
+    id: '6',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.red }),
       ...swatch({
@@ -123,7 +139,8 @@ export const palettes = [
     },
   },
   {
-    id: 7,
+    id: '7',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.cyan }),
       ...swatch({
@@ -147,7 +164,8 @@ export const palettes = [
     },
   },
   {
-    id: 8,
+    id: '8',
+    name: '',
     colors: {
       ...swatch({ name: 'primary', color: SwatchColor.blue, variant: 'vivid' }),
       ...swatch({
@@ -175,7 +193,8 @@ export const palettes = [
     },
   },
   {
-    id: 9,
+    id: '9',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -206,7 +225,8 @@ export const palettes = [
     },
   },
   {
-    id: 10,
+    id: '10',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -236,7 +256,8 @@ export const palettes = [
     },
   },
   {
-    id: 11,
+    id: '11',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -268,7 +289,8 @@ export const palettes = [
     },
   },
   {
-    id: 12,
+    id: '12',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -295,7 +317,8 @@ export const palettes = [
     },
   },
   {
-    id: 13,
+    id: '13',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -325,7 +348,8 @@ export const palettes = [
     },
   },
   {
-    id: 14,
+    id: '14',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -354,7 +378,8 @@ export const palettes = [
     },
   },
   {
-    id: 15,
+    id: '15',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -382,7 +407,8 @@ export const palettes = [
     },
   },
   {
-    id: 16,
+    id: '16',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -413,7 +439,8 @@ export const palettes = [
     },
   },
   {
-    id: 17,
+    id: '17',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -444,7 +471,8 @@ export const palettes = [
     },
   },
   {
-    id: 18,
+    id: '18',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -473,7 +501,8 @@ export const palettes = [
     },
   },
   {
-    id: 19,
+    id: '19',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -504,7 +533,8 @@ export const palettes = [
     },
   },
   {
-    id: 20,
+    id: '20',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -532,7 +562,8 @@ export const palettes = [
     },
   },
   {
-    id: 21,
+    id: '21',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -560,7 +591,8 @@ export const palettes = [
     },
   },
   {
-    id: 22,
+    id: '22',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -591,7 +623,8 @@ export const palettes = [
     },
   },
   {
-    id: 23,
+    id: '23',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',
@@ -623,7 +656,8 @@ export const palettes = [
     },
   },
   {
-    id: 24,
+    id: '24',
+    name: '',
     colors: {
       ...swatch({
         name: 'primary',

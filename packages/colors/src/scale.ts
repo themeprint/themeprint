@@ -2,6 +2,8 @@ import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
 import { isObject } from '@utilz/types'
 import { Color, color, Hsl, toColor } from './color'
+import { ColorMode } from '@theme-ui/core'
+import * as CSS from 'csstype'
 
 const toChroma = (value: Hsl) =>
   chroma.hsl(value.h, value.s / 100, value.l / 100)
@@ -169,14 +171,14 @@ export const toNamedScale = ({
   name: string
   scale: Color[]
   format: (color: Color) => string
-}) => {
+}): ColorMode => {
   // TODO: support type 'array' or 'object'
   // default to object, so return { xxs: .., xs: .. etc. }
   // if type is array, return scale.map(c => format(c))
   // Generate object names automatically based off of number value
-  const values = scale.map((c) => format(c))
+  const values: CSS.Property.Color[] = scale.map((c) => format(c))
 
-  const seed: Record<string, unknown> = {}
+  const seed: Record<string, CSS.Property.Color> = {}
   const obj = values.reduce((obj, v, i) => {
     obj[`${name}${(i + 1) * 100}`] = v
     return obj
