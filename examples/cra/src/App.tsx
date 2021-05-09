@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Box, Select } from 'theme-ui'
 import { ThemeViewer } from '@themeprint/viewer' // TODO: move to @themeview packages
 import { useState } from 'react'
