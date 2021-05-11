@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/themeprint/themeprint/compare/cra@0.1.5...cra@0.1.6) (2021-05-11)
+
+
+### Features
+
+* add palette to create theme ([#26](https://github.com/themeprint/themeprint/issues/26)) ([653f252](https://github.com/themeprint/themeprint/commit/653f252520c7c792eb08d2a9813245ccac8c7a09))
+
+
+
+
+
 ## [0.1.5](https://github.com/themeprint/themeprint/compare/cra@0.1.4...cra@0.1.5) (2021-04-14)
 
 
