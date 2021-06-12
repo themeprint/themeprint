@@ -39,7 +39,6 @@
     "@testing-library/react-hooks": "^7.0.0",
     "@themeprint/lint": "^0.1.1",
     "@types/jest": "^26.0.23",
-    "@types/theme-ui": "^0.6.0",
     "faker": "^5.1.0",
     "jest": "^27.0.4",
     "jest-each": "^27.0.2",

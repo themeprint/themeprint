@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@themeprint/colors": "^0.1.4",
-    "@types/theme-ui": "^0.6.0",
     "@utilz/deepmerge": "^0.1.16"
   },
   "devDependencies": {
