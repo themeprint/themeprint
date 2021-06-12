@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.5...@themeprint/ui@0.1.6) (2021-06-12)
+
+**Note:** Version bump only for package @themeprint/ui
+
+
+
+
+
 ## [0.1.5](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.4...@themeprint/ui@0.1.5) (2021-05-11)
 
 
