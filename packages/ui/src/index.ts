@@ -1,7 +1,5 @@
-export * from './use-theme'
 export * from './variant'
 export * from './unit'
-export * from './theme'
 export * from './border'
 export * from './size-scale'
 export * from './breakpoints'
