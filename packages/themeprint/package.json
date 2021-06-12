@@ -1,6 +1,6 @@
 {
   "name": "themeprint",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Blueprints for Theme UI themes.",
   "source": "src/index.ts",
   "main": "dist/themeprint.js",
@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@themeprint/colors": "^0.1.4",
-    "@themeprint/themes": "^0.1.5",
-    "@themeprint/ui": "^0.1.6"
+    "@themeprint/themes": "^0.1.6",
+    "@themeprint/ui": "^0.1.7"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
