@@ -1,10 +1,10 @@
-import { isString, isNil, numeric, Nullable } from '@utilz/types'
+import { isString, isNil, toNumeric, Nullish } from '@utilz/types'
 
 const chars = (value: string) => /^[a-zA-Z]+$/.test(value)
 
 export interface ColorIdentifier {
   name: string
-  index: Nullable<number>
+  index: Nullish<number>
   format: () => string
 }
 
@@ -38,7 +38,7 @@ export const identifier = (value: unknown): ColorIdentifier | undefined => {
     return undefined
   }
 
-  const index = numeric(split[1])
+  const index = toNumeric(split[1])
 
   if (!index.isValid) {
     return undefined
