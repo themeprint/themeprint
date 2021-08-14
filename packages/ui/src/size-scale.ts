@@ -1,4 +1,4 @@
-import { isNil, isFunction, Nullable } from '@utilz/types'
+import { isNil, isFunction, Nullish } from '@utilz/types'
 import { unit } from './unit'
 import { deepmerge } from '@utilz/deepmerge'
 
@@ -23,115 +23,116 @@ export interface GeneratorParams {
   type: string
   name: string
   medium: number | string
-  previous: number | Nullable<string>
+  previous: number | Nullish<string>
 }
 
 export interface ConfigureSizeScaleOptions {
   round?: boolean
 }
 
-export const configureSizeScale = (options: ConfigureSizeScaleOptions = {}) => (
-  generator: (params: GeneratorParams) => {}
-) => (m: number | string) => {
-  const defaultOptions: ConfigureSizeScaleOptions = {
-    round: false,
-  }
+export const configureSizeScale =
+  (options: ConfigureSizeScaleOptions = {}) =>
+  (generator: (params: GeneratorParams) => {}) =>
+  (m: number | string) => {
+    const defaultOptions: ConfigureSizeScaleOptions = {
+      round: false,
+    }
 
-  const { round } = deepmerge<ConfigureSizeScaleOptions>(
-    defaultOptions,
-    options
-  )
+    const { round } = deepmerge<ConfigureSizeScaleOptions>(
+      defaultOptions,
+      options
+    )
 
-  if (isNil(generator)) {
-    throw new Error(`No generator specified.`)
-  }
+    if (isNil(generator)) {
+      throw new Error(`No generator specified.`)
+    }
 
-  if (!isFunction(generator)) {
-    throw new Error(`Generator must be a function.`)
-  }
+    if (!isFunction(generator)) {
+      throw new Error(`Generator must be a function.`)
+    }
 
-  const s = unfold(
-    (v: any) =>
-      v.name === 'xxxxs'
-        ? false
-        : [
-            [v.name, v.value],
-            {
-              name: `x${v.name}`,
-              value: generator({
-                type: 's',
+    const s = unfold(
+      (v: any) =>
+        v.name === 'xxxxs'
+          ? false
+          : [
+              [v.name, v.value],
+              {
                 name: `x${v.name}`,
-                medium: m,
-                previous: v.value,
-              }),
-            },
-          ],
-    {
-      name: 's',
-      value: generator({
-        type: 's',
+                value: generator({
+                  type: 's',
+                  name: `x${v.name}`,
+                  medium: m,
+                  previous: v.value,
+                }),
+              },
+            ],
+      {
         name: 's',
-        medium: m,
-        previous: m,
-      }),
-    }
-  )
+        value: generator({
+          type: 's',
+          name: 's',
+          medium: m,
+          previous: m,
+        }),
+      }
+    )
 
-  const l = unfold(
-    (v: any) =>
-      v.name === 'xxxxl'
-        ? false
-        : [
-            [v.name, v.value],
-            {
-              name: `x${v.name}`,
-              value: generator({
-                type: 'l',
+    const l = unfold(
+      (v: any) =>
+        v.name === 'xxxxl'
+          ? false
+          : [
+              [v.name, v.value],
+              {
                 name: `x${v.name}`,
-                medium: m,
-                previous: v.value,
-              }),
-            },
-          ],
-    {
-      name: 'l',
-      value: generator({
-        type: 'l',
+                value: generator({
+                  type: 'l',
+                  name: `x${v.name}`,
+                  medium: m,
+                  previous: v.value,
+                }),
+              },
+            ],
+      {
         name: 'l',
-        medium: m,
-        previous: m,
-      }),
+        value: generator({
+          type: 'l',
+          name: 'l',
+          medium: m,
+          previous: m,
+        }),
+      }
+    )
+
+    const scale = fromEntries(
+      s
+        .concat([
+          [
+            'm',
+            generator({
+              type: 'm',
+              name: 'm',
+              medium: m,
+              previous: undefined,
+            }),
+          ],
+        ])
+        .concat(l)
+    )
+
+    if (round) {
+      return Object.keys(scale).reduce((result: Record<string, unknown>, k) => {
+        const u = unit(scale[k])
+        result[k] = u.unitless
+          ? Math.round(u.value)
+          : `${Math.round(u.value)}${u.unit}`
+        return result
+      }, {})
     }
-  )
 
-  const scale = fromEntries(
-    s
-      .concat([
-        [
-          'm',
-          generator({
-            type: 'm',
-            name: 'm',
-            medium: m,
-            previous: undefined,
-          }),
-        ],
-      ])
-      .concat(l)
-  )
-
-  if (round) {
-    return Object.keys(scale).reduce((result: Record<string, unknown>, k) => {
-      const u = unit(scale[k])
-      result[k] = u.unitless
-        ? Math.round(u.value)
-        : `${Math.round(u.value)}${u.unit}`
-      return result
-    }, {})
+    return scale
   }
-
-  return scale
-}
 
 export const sizeScale = configureSizeScale()
 

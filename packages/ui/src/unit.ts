@@ -1,4 +1,4 @@
-import { numeric, isString, isNil } from '@utilz/types'
+import { toNumeric, isString, isNil, Nullish } from '@utilz/types'
 
 const isValidUnit = (value: string) => {
   if (!value) {
@@ -31,10 +31,10 @@ const isValidUnit = (value: string) => {
 }
 
 export interface Unit {
-  value: number;
-  unit: string;
-  unitless: boolean;
-  css: () => string,
+  value: number
+  unit: string
+  unitless: boolean
+  css: () => string
 }
 
 function isStringGuard(value: number | string): value is string {
@@ -54,8 +54,9 @@ export const unit = (value: number | string): Unit => {
     )
   }
 
-  const number = numeric(value)
-  if (number.isValid && number.value) {
+  const number = toNumeric(value)
+
+  if (number.isValid) {
     return {
       value: number.value,
       unit: 'px',
@@ -70,7 +71,7 @@ export const unit = (value: number | string): Unit => {
       return invalid()
     }
 
-    const number = numeric(numParts[0])
+    const number = toNumeric(numParts[0])
     if (!number.isValid || !number.value) {
       return invalid()
     }
