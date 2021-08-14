@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/themeprint/themeprint/compare/themeprint@0.1.4...themeprint@0.1.5) (2021-08-14)
+
+**Note:** Version bump only for package themeprint
+
+
+
+
+
 ## [0.1.4](https://github.com/themeprint/themeprint/compare/themeprint@0.1.3...themeprint@0.1.4) (2021-06-12)
 
 **Note:** Version bump only for package themeprint
