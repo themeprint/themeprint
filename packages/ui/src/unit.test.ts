@@ -53,7 +53,7 @@ describe('unit', () => {
     })
   })
 
-  it.only('should return px unit for zero integer with px', () => {
+  it('should return px unit for zero integer with px', () => {
     expect(unit('0px')).toMatchObject({
       unit: 'px',
       value: 0,
