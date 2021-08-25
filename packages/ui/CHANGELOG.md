@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.9...@themeprint/ui@0.1.10) (2021-08-25)
+
+
+### Bug Fixes
+
+* nullish check for zero ([#40](https://github.com/themeprint/themeprint/issues/40)) ([157bbcb](https://github.com/themeprint/themeprint/commit/157bbcb0abf3a406fe31091d0d4ccf0810e71197))
+
+
+
+
+
 ## [0.1.9](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.8...@themeprint/ui@0.1.9) (2021-08-25)
 
 
