@@ -1,6 +1,6 @@
 import { toNumeric, isString, isNil, Nullish } from '@utilz/types'
 
-const isValidUnit = (value: string) => {
+const isValidUnit = (value?: Nullish<string>) => {
   if (!value) {
     return false
   }
@@ -37,11 +37,11 @@ export interface Unit {
   css: () => string
 }
 
-function isStringGuard(value: number | string): value is string {
+function isStringGuard(value?: Nullish<number | string>): value is string {
   return isString(value)
 }
 
-export const unit = (value: number | string): Unit => {
+export const unit = (value?: Nullish<number | string>): Unit => {
   if (isNil(value)) {
     throw new Error('No value specified.')
   }
