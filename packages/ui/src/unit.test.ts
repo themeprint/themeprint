@@ -53,6 +53,14 @@ describe('unit', () => {
     })
   })
 
+  it('should return px unit for zero integer with px', () => {
+    expect(unit('0px')).toMatchObject({
+      unit: 'px',
+      value: 0,
+      unitless: false,
+    })
+  })
+
   it('should return px unit for integer with px', () => {
     expect(unit('22px')).toMatchObject({
       unit: 'px',

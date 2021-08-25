@@ -72,7 +72,7 @@ export const unit = (value?: Nullish<number | string>): Unit => {
     }
 
     const number = toNumeric(numParts[0])
-    if (!number.isValid || !number.value) {
+    if (!number.isValid || number.value == null) {
       return invalid()
     }
 
