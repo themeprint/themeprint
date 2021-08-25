@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.8...@themeprint/ui@0.1.9) (2021-08-25)
+
+
+### Bug Fixes
+
+* update unit type ([#39](https://github.com/themeprint/themeprint/issues/39)) ([3888609](https://github.com/themeprint/themeprint/commit/3888609936a56d9d8f2e8b8abd3e9bf71c2592e4))
+
+
+
+
+
 ## [0.1.8](https://github.com/themeprint/themeprint/compare/@themeprint/ui@0.1.7...@themeprint/ui@0.1.8) (2021-08-14)
 
 **Note:** Version bump only for package @themeprint/ui
