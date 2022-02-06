@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/unit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "themeprint unit utilities.",
   "source": "src/index.ts",
   "main": "dist/unit.js",
