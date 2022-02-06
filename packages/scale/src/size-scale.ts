@@ -1,9 +1,8 @@
 import { isNil, isFunction, Nullish } from '@utilz/types'
-import { unit } from './unit'
 import { deepmerge } from '@utilz/deepmerge'
+import { unit } from '@themeprint/unit'
 
 // TODO: type
-
 const unfold = (fn: any, seed: any) => {
   let pair = fn(seed)
   const result = []

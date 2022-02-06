@@ -25,8 +25,9 @@
   },
   "dependencies": {
     "@themeprint/colors": "^0.1.5",
+    "@themeprint/scale": "0.1.0",
     "@themeprint/themes": "^0.1.7",
-    "@themeprint/ui": "^0.1.10"
+    "@themeprint/unit": "0.1.0"
   },
   "devDependencies": {
     "microbundle": "^0.13.3",

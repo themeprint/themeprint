@@ -4389,6 +4389,19 @@
     "@theme-ui/css" "0.10.0"
     "@theme-ui/mdx" "0.10.0"
 
+"@themeprint/ui@^0.1.3":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@themeprint/ui/-/ui-0.1.10.tgz#e98cf6653761eb3b343ae12887dea217cc6fc2fc"
+  integrity sha512-DmCkaOMSEOuCFK5K5toK+rg5McDzXetEcfd++5XhpZNCh4Xcu+iqee1/n/t7ez1yMEPDQJWkzmbtxaatUpX1Bg==
+  dependencies:
+    "@theme-ui/core" "^0.10.0"
+    "@theme-ui/css" "^0.10.1"
+    "@themeprint/colors" "^0.1.5"
+    "@utilz/deepmerge" "^0.1.18"
+    "@utilz/get" "^0.1.5"
+    "@utilz/types" "^0.1.16"
+    react-use "^17.2.4"
+
 "@themeprint/viewer@^0.1.3":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@themeprint/viewer/-/viewer-0.1.3.tgz#554cf1400e76eaa585ea1046ee754f13513e9b02"
