@@ -27,25 +27,25 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "jest-extended"
+      "jest-extended/all"
     ]
   },
   "dependencies": {
-    "@utilz/deepmerge": "^0.1.18",
-    "@utilz/types": "^0.1.16",
-    "chroma-js": "^2.1.2",
-    "csstype": "^3.0.8"
+    "@utilz/deepmerge": "^0.1.21",
+    "@utilz/types": "^0.1.19",
+    "chroma-js": "^2.4.2",
+    "csstype": "^3.0.10"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-typescript": "^7.15.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
     "@types/chroma-js": "^2.1.3",
-    "@types/faker": "^5.5.8",
-    "faker": "^5.1.0",
-    "jest": "^27.0.6",
-    "jest-extended": "^0.11.5",
-    "microbundle": "^0.13.3",
-    "prettier": "^2.3.2",
-    "ramda": "^0.27.1"
+    "@types/faker": "^6.6.9",
+    "faker": "^6.6.6",
+    "jest": "^27.5.0",
+    "jest-extended": "^2.0.0",
+    "microbundle": "^0.14.2",
+    "prettier": "^2.5.1",
+    "ramda": "^0.28.0"
   }
 }
