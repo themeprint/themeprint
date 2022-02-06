@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.13](https://github.com-devdigital/themeprint/themeprint/compare/cra@0.1.12...cra@0.1.13) (2022-02-06)
+
+**Note:** Version bump only for package cra
+
+
+
+
+
 ## [0.1.12](https://github.com-devdigital/themeprint/themeprint/compare/cra@0.1.11...cra@0.1.12) (2022-02-06)
 
 **Note:** Version bump only for package cra

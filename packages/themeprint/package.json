@@ -1,6 +1,6 @@
 {
   "name": "themeprint",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Blueprints for Theme UI themes.",
   "source": "src/index.ts",
   "main": "dist/themeprint.js",
@@ -24,10 +24,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@themeprint/colors": "^0.1.5",
-    "@themeprint/scale": "^0.1.1",
-    "@themeprint/themes": "^0.1.7",
-    "@themeprint/unit": "^0.1.1"
+    "@themeprint/colors": "^0.1.6",
+    "@themeprint/scale": "^0.1.2",
+    "@themeprint/themes": "^0.1.8",
+    "@themeprint/unit": "^0.1.2"
   },
   "devDependencies": {
     "microbundle": "^0.14.2",

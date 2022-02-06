@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/themes",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "themeprint themes.",
   "source": "src/index.ts",
   "main": "dist/themes.js",
@@ -31,7 +31,7 @@
     ]
   },
   "dependencies": {
-    "@themeprint/colors": "^0.1.5",
+    "@themeprint/colors": "^0.1.6",
     "@utilz/deepmerge": "^0.1.21"
   },
   "devDependencies": {

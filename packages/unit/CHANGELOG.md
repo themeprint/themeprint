@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/themeprint/themeprint/compare/@themeprint/unit@0.1.1...@themeprint/unit@0.1.2) (2022-02-06)
+
+**Note:** Version bump only for package @themeprint/unit
+
+
+
+
+
 ## 0.1.1 (2022-02-06)
 
 

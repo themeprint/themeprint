@@ -1,6 +1,6 @@
 {
   "name": "@themeprint/unit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "themeprint unit utilities.",
   "source": "src/index.ts",
   "main": "dist/unit.js",
@@ -34,7 +34,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
-    "@themeprint/lint": "^0.1.2",
+    "@themeprint/lint": "^0.1.3",
     "@types/jest": "^27.4.0",
     "babel-jest": "^27.5.0",
     "faker": "^6.6.6",

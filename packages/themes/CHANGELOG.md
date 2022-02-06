@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/themeprint/themeprint/compare/@themeprint/themes@0.1.7...@themeprint/themes@0.1.8) (2022-02-06)
+
+
+### Bug Fixes
+
+* add theme type ([#47](https://github.com/themeprint/themeprint/issues/47)) ([f6122c9](https://github.com/themeprint/themeprint/commit/f6122c91e6a47e2698063142f616a5a61116ec84))
+
+
+
+
+
 ## [0.1.7](https://github.com/themeprint/themeprint/compare/@themeprint/themes@0.1.6...@themeprint/themes@0.1.7) (2021-08-14)
 
 **Note:** Version bump only for package @themeprint/themes
