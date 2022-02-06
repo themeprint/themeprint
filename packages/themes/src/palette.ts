@@ -1,5 +1,5 @@
 import { palettes } from './palettes'
-import type { ColorMode } from 'theme-ui'
+
 export interface PaletteOptions {
   id: string
 }
@@ -9,7 +9,7 @@ export interface PaletteInfo {
   name: string
 }
 export interface Palette extends PaletteInfo {
-  colors: ColorMode
+  colors: Record<string, unknown>
 }
 
 export const getPalettes = (): PaletteInfo[] => {
@@ -19,7 +19,7 @@ export const getPalettes = (): PaletteInfo[] => {
   }))
 }
 
-export const palette = ({ id }: PaletteOptions): ColorMode => {
+export const palette = ({ id }: PaletteOptions): Record<string, unknown> => {
   const pal = palettes.find((p) => p.id === id)
 
   if (!pal) {

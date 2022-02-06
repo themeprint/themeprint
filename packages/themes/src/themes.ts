@@ -1,12 +1,11 @@
 import { deepmerge } from '@utilz/deepmerge'
-import { Theme } from 'theme-ui'
 import { palette } from './palette'
 
 export enum ThemeVariant {
   professional = 'professional',
 }
 
-const themes = new Map<string, Partial<Theme>>([
+const themes = new Map<string, any>([
   [
     ThemeVariant.professional,
     {
@@ -15,15 +14,18 @@ const themes = new Map<string, Partial<Theme>>([
   ],
 ])
 
-export interface CreateThemeOptions {
+export interface CreateThemeOptions<T> {
   variant?: ThemeVariant
   palette?: string
-  theme?: Partial<Theme>
+  theme?: Partial<T>
 }
 
-export function createTheme(options?: CreateThemeOptions): Theme {
-  const { variant = ThemeVariant.professional, palette: paletteId, theme } =
-    options ?? {}
+export function createTheme<T extends {}>(options?: CreateThemeOptions<T>): T {
+  const {
+    variant = ThemeVariant.professional,
+    palette: paletteId,
+    theme,
+  } = options ?? {}
   const themeVariant = themes.get(variant)
 
   if (!themeVariant) {
@@ -34,5 +36,5 @@ export function createTheme(options?: CreateThemeOptions): Theme {
     ? palette({ id: paletteId })
     : themeVariant.colors
 
-  return deepmerge<Theme>(themeVariant, theme)
+  return deepmerge<T>(themeVariant, theme)
 }
