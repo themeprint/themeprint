@@ -2,7 +2,6 @@ import chroma from 'chroma-js'
 import { deepmerge } from '@utilz/deepmerge'
 import { isObject } from '@utilz/types'
 import { Color, color, Hsl, toColor } from './color'
-import { ColorMode } from '@theme-ui/core'
 import * as CSS from 'csstype'
 
 const toChroma = (value: Hsl) =>
@@ -89,11 +88,13 @@ const colorsFromCenter = (
 }
 
 // See https://blog.logrocket.com/how-to-manipulate-css-colors-with-javascript-fb547113a1b8/
-const rotateHueByDegrees = (degrees: number) => ({ value }: { value: Hsl }) => {
-  const modulo = (x: number, n: number) => ((x % n) + n) % n
-  const newHue = modulo(value.h + degrees, 360)
-  return color({ h: newHue, s: value.s, l: value.l })
-}
+const rotateHueByDegrees =
+  (degrees: number) =>
+  ({ value }: { value: Hsl }) => {
+    const modulo = (x: number, n: number) => ((x % n) + n) % n
+    const newHue = modulo(value.h + degrees, 360)
+    return color({ h: newHue, s: value.s, l: value.l })
+  }
 
 const validateRange = (obj: ColorScale) => {
   if (!obj) {
@@ -163,7 +164,7 @@ export interface ColorScale {
 // Converts a collection of colors to a named scale, e.g. primary100...primary900
 // Uses the name as an alias to the center scale value
 // TODO: assumes center value
-export const toNamedScale = ({
+export function toNamedScale({
   name,
   scale,
   format,
@@ -171,7 +172,7 @@ export const toNamedScale = ({
   name: string
   scale: Color[]
   format: (color: Color) => string
-}): ColorMode => {
+}) {
   // TODO: support type 'array' or 'object'
   // default to object, so return { xxs: .., xs: .. etc. }
   // if type is array, return scale.map(c => format(c))
@@ -195,57 +196,56 @@ export const toNamedScale = ({
 // must have center, or start and end, or start, center, end
 // if just center we generate a scale around that center value
 // or a range with start, end and optional center values
-export const configure = (defaultOptions?: Partial<ScaleOptions>) => (
-  value: ColorScale,
-  options?: Partial<ScaleOptions>
-) => {
-  const resolvedOptions = deepmerge<ScaleOptions>(
-    {
-      number: 9,
-      generator: rotateHue(80),
-      format: defaultFormatter,
-    },
-    defaultOptions,
-    options
-  )
+export const configure =
+  (defaultOptions?: Partial<ScaleOptions>) =>
+  (value: ColorScale, options?: Partial<ScaleOptions>) => {
+    const resolvedOptions = deepmerge<ScaleOptions>(
+      {
+        number: 9,
+        generator: rotateHue(80),
+        format: defaultFormatter,
+      },
+      defaultOptions,
+      options
+    )
 
-  if (!isObject(value)) {
-    throw new Error('Value is invalid object.')
-  }
+    if (!isObject(value)) {
+      throw new Error('Value is invalid object.')
+    }
 
-  // TODO: support any odd number of elements => 1
-  if (resolvedOptions.number !== 9) {
-    throw new Error('Only 9 elements are currently supported.')
-  }
+    // TODO: support any odd number of elements => 1
+    if (resolvedOptions.number !== 9) {
+      throw new Error('Only 9 elements are currently supported.')
+    }
 
-  // TODO: validate resolved options
-  const { number, format, generator } = resolvedOptions
-  const { name, start, center, end } = value
+    // TODO: validate resolved options
+    const { number, format, generator } = resolvedOptions
+    const { name, start, center, end } = value
 
-  if (!name) {
-    throw new Error('Must specify scale name.')
-  }
+    if (!name) {
+      throw new Error('Must specify scale name.')
+    }
 
-  if (center && !start && !end) {
+    if (center && !start && !end) {
+      return toNamedScale({
+        name,
+        scale: colorsFromCenter(center, number, generator),
+        format,
+      })
+    }
+
+    validateRange(value)
+
+    // TODO: allow valid combinations of start, center, end
+    const palette = center
+      ? colorsFromEdgesAndCenter(start!, center!, end!, resolvedOptions.number)
+      : colorsFromEdges(start!, end!, resolvedOptions.number)
+
     return toNamedScale({
       name,
-      scale: colorsFromCenter(center, number, generator),
+      scale: palette,
       format,
     })
   }
-
-  validateRange(value)
-
-  // TODO: allow valid combinations of start, center, end
-  const palette = center
-    ? colorsFromEdgesAndCenter(start!, center!, end!, resolvedOptions.number)
-    : colorsFromEdges(start!, end!, resolvedOptions.number)
-
-  return toNamedScale({
-    name,
-    scale: palette,
-    format,
-  })
-}
 
 export const scale = configure()
