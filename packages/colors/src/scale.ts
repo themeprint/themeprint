@@ -172,7 +172,7 @@ export function toNamedScale({
   name: string
   scale: Color[]
   format: (color: Color) => string
-}) {
+}): Record<string, unknown> {
   // TODO: support type 'array' or 'object'
   // default to object, so return { xxs: .., xs: .. etc. }
   // if type is array, return scale.map(c => format(c))
